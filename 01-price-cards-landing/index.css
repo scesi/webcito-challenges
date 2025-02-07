@@ -39,9 +39,10 @@ body {
   background: #ff8e3c;
   box-shadow: 0px 42px 34px 0px rgba(82, 67, 194, 0.3);
   color: #373737;
-  span{
+  position: relative;
+  top: -50px;
+  span {
     color: #373737;
-
   }
 }
 
@@ -72,8 +73,17 @@ body {
   opacity: 0.2;
 }
 
+.card--li-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 12px;
+}
+
 .card--tag {
+  width: fit-content;
   padding: 5px 18px;
+  margin-left: 45%;
   border-radius: 13.5px;
   background: #ffd5b6;
   color: #373737;
