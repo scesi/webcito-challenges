@@ -41,3 +41,68 @@ h6,
 p {
   margin: 0;
 }
+
+.prices {
+  display: flex;
+  flex-direction: column;
+  margin: 135px auto;
+}
+
+.prices__header {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.prices__header__title {
+  font-size: var(--headline-1);
+  color: var(--black);
+  font-weight: bold;
+}
+
+.prices__cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.prices__cards__card {
+  display: flex;
+  flex-direction: column;
+}
+
+.prices__cards__card__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary);
+  padding: 20px;
+}
+
+.prices__cards__card--highlight {
+  box-shadow: var(--shadows);
+  background: var(--primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.prices__cards__card__button--regular {
+  background-color: var(--transparent);
+  color: var(--primary);
+  padding: 10px 20px;
+  font-size: var(--button);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.prices__cards__card__button--active {
+  background-color: var(--black);
+  color: var(--white);
+  border: 1px transparent var(--primary);
+  padding: 10px 20px;
+  font-size: var(--button);
+  font-weight: bold;
+  cursor: pointer;
+}
