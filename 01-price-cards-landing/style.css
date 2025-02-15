@@ -6,7 +6,9 @@
   --grey: rgba(132, 129, 153, 1);
   --red: rgba(250, 81, 58, 1);
   --grey-2: rgba(163, 163, 163, 1);
+  --grey-3: rgba(55, 55, 55, 0.2);
   --bg: rgba(245, 245, 250, 1);
+  --tag: rgb(255, 213, 184);
   --transparent: transparent;
 
   /* Text-size styles */
@@ -26,54 +28,96 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   background-color: var(--bg);
+  color: var(--black);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.prices {
+main {
   display: flex;
   flex-direction: column;
-  margin: 135px auto;
+  gap: 100px;
 }
 
-.prices__header {
+.plans {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-inline: 10%;
+  height: 100vh;
+}
+
+.plans__header {
   margin: 0;
   display: flex;
   flex-direction: column;
+  gap: 30px;
 }
 
-.prices__header__title {
+.plans__header__title {
   font-size: var(--headline-1);
   color: var(--black);
   font-weight: bold;
 }
 
-.prices__cards {
+.plans__cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 100px;
+  padding: 40px;
 }
 
-.prices__cards__card {
+.plans__cards__card {
   display: flex;
   flex-direction: column;
+  max-width: 240px;
+  justify-content: center;
+  border-radius: 26px;
+  gap: 16px;
 }
 
-.prices__cards__card__header {
+.plans__cards__card__title {
+  font-size: var(--headline-2);
+}
+
+.plans__cards__card--highlight {
+  box-shadow: var(--shadows);
+  background: var(--primary);
+  background-image: url("./assets/background.svg");
+  background-repeat: no-repeat;
+  background-position: calc(100% + 30px);
+  display: flex;
+  flex-direction: column;
+  max-width: 305px;
+  padding: 34px;
+  border-radius: 26px;
+  gap: 16px;
+  margin-top: -50px;
+  position: relative;
+}
+
+.plans__cards__card--highlight__tag {
+  background-color: var(--tag);
+  padding: 5px 20px;
+  border-radius: 15px;
+  font-size: var(--caption---bold);
+  font-weight: bold;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.plans__cards__card__header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,28 +125,100 @@ p {
   padding: 20px;
 }
 
-.prices__cards__card--highlight {
-  box-shadow: var(--shadows);
-  background: var(--primary);
+.plans__cards__card__title {
   display: flex;
-  flex-direction: column;
 }
 
-.prices__cards__card__button--regular {
+.plans__cards__card__price {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.plans__cards__card__price__month {
+  display: flex;
+  align-items: center;
+  color: var(--grey);
+}
+
+.plans__cards__card__price__month--active {
+  display: flex;
+  align-items: center;
+}
+
+.plans__cards__card__features__item {
+  display: flex;
+  padding: 10px 0;
+  font-size: var(--body-2---regular);
+  list-style: none;
+  gap: 10px;
+}
+
+.plans__cards__card__features__item--disabled {
+  opacity: 20%;
+  display: flex;
+  padding: 10px 0;
+  font-size: var(--body-2---regular);
+  list-style: none;
+  gap: 10px;
+}
+
+.plans__cards__card__features__checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--grey-3);
+  background-image: url("./assets/Path.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  color: var(--primary);
+}
+
+.plans__cards__card__features__checkbox--active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  background-image: url("./assets/PathWhite.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  color: var(--primary);
+}
+
+.plans__cards__card__button {
   background-color: var(--transparent);
   color: var(--primary);
-  padding: 10px 20px;
+  border: none;
+  font-size: var(--button);
+  font-weight: bold;
+  cursor: pointer;
+  padding: 12px 32px;
+  border-radius: 90px;
+}
+
+.plans__cards__card__button--active {
+  background-color: var(--black);
+  color: var(--white);
+  border: none;
+  padding: 12px 32px;
+  border-radius: 90px;
   font-size: var(--button);
   font-weight: bold;
   cursor: pointer;
 }
 
-.prices__cards__card__button--active {
-  background-color: var(--black);
+.plans__cards__card__button:hover {
+  background-color: var(--primary);
   color: var(--white);
-  border: 1px transparent var(--primary);
-  padding: 10px 20px;
-  font-size: var(--button);
-  font-weight: bold;
-  cursor: pointer;
+}
+
+.plans__cards__card__button--active:hover {
+  background-color: var(--black);
+  color: var(--primary);
 }
