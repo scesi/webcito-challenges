@@ -51,9 +51,9 @@ main {
 .plans {
   display: flex;
   flex-direction: column;
-  margin-block: 10%;
+  margin-top: 5%;
   margin-inline: 10%;
-  height: 100vh;
+  height: 85vh;
 }
 
 .plans__header {
