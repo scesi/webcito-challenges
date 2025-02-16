@@ -1,0 +1,151 @@
+
+body{
+    font-family: "Poppins", serif;
+    background-color: #F5F5FA;
+    padding: 30px 90px;
+    color: #373737;
+}
+
+.title{
+    font-size: 50px;
+    font-weight: 600;
+}
+.description{
+    margin-top: -20px;
+    color: #848199;
+    font-size: 18px;
+}
+.text{  
+    display: flex;
+    gap: 8px;
+    align-items: center;  
+}
+.title-card{
+    margin-bottom: -10px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 30px;
+    gap: 8px;
+}
+.month{
+    color: #373737;
+    font-size: 16px;
+    opacity: 50%;
+    font-weight: 400;
+}
+.proposal{
+    color: #848199;
+    font-size: 15px;
+}
+.proposal--premium{
+    color: #373737;
+    font-weight: 300;
+}
+.not--proposal{
+    opacity: 30%;
+}
+.card{
+    color: #373737;
+    margin-top: 100px;
+    background-color: #fff;
+    border:  black;
+    border-radius: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(300px, 1fr));
+}
+.card--price{
+    padding: 20px 40px 40px 40px;
+}
+.plan{
+    font-size: 32px;
+    margin: 15px 0 10px 0;
+    font-weight: 600;
+}
+.btn{ 
+    background-color:  #fcf4ec ;
+    color: #FF8E3C;
+    border: none;
+    border-radius: 40px;
+    font-family: "Poppins", serif;
+    font-weight: 700;
+    font-size: 18px;
+    height: 50px;
+    width: 100%;
+}
+.btn--color{
+    background-color: #373737;
+    color: #fff;
+}
+.card--price--hover{
+    display: flex;
+    width: 94%;
+}
+.card--price--color{
+    margin-bottom: 40px;
+    margin-top: -60px;
+    box-shadow: -4px 30px 14px 10px rgba(164, 174, 249, 0.4);
+    color: #000;
+    width: 100%;
+    border-radius: 30px;
+    padding: 30px;
+    background-color: #FF8E3C;
+}
+
+@media (max-width:360px) {
+    body{
+        padding: 16px 34px;
+        background-color: #F5F5FA;
+        
+    }
+    .title{
+       font-size: 24px;
+       text-align: left;
+    }
+    .description{
+        margin-top: -10px;
+        margin-bottom: -60px;
+        color: #848199;
+        font-size: 15px;
+    }
+    .card{
+        margin-top: 100px;
+        border-radius: 40px;
+        background-color: #F5F5FA;
+        display: grid;
+        grid-template-columns: repeat(1,minmax(300px,1fr));
+        gap: 50px;
+        justify-content: center;
+    }
+    .card--price{
+        width: 220px;
+        border-radius: 30px;
+        background-color: #fff;
+    }
+    .card--price--hover{
+        width: 300px;
+        color: #373737;
+    }
+    .card--price--color{
+        margin: 0 ;
+        box-shadow: -4px 30px 14px 10px rgba(164, 174, 249, 0.4);
+        color: #373737;
+        border-radius: 30px;
+        padding: 20px 40px 40px 40px;
+        background-color: #FF8E3C;
+    }
+    .proposal{
+        color: #373737;
+        font-size: 13px;
+    }
+    .description-plan{
+        color: #373737;
+        font-size: 15px;
+    }
+    .plan{
+        font-size: 28px;
+        margin: 12px 0 8px 0;
+        font-weight: 600;
+    }
+    
+}
