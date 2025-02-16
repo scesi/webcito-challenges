@@ -29,15 +29,16 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
   background-color: var(--bg);
   color: var(--black);
 }
 
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   box-sizing: border-box;
 }
 
@@ -50,7 +51,7 @@ main {
 .plans {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin-block: 10%;
   margin-inline: 10%;
   height: 100vh;
 }
@@ -84,6 +85,7 @@ main {
   justify-content: center;
   border-radius: 26px;
   gap: 16px;
+  order: 0;
 }
 
 .plans__cards__card__title {
@@ -221,4 +223,27 @@ main {
 .plans__cards__card__button--active:hover {
   background-color: var(--black);
   color: var(--primary);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+  .plans__cards {
+    padding: 25px;
+    gap: 50px;
+  }
+
+  .plans__header__title {
+    font-size: var(--headline-2);
+  }
+
+  .plans__cards__card {
+    max-width: 100%;
+    order: 1;
+  }
+
+  .plans__cards__card--highlight {
+    max-width: 100%;
+  }
 }
