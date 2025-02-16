@@ -3,7 +3,7 @@
   --black: rgba(55, 55, 55, 1);
   --primary: rgba(255, 142, 60, 1);
   --white: rgba(255, 255, 255, 1);
-  --grey: rgba(132, 129, 153, 1);
+  --grey: rgb(128, 126, 146);
   --red: rgba(250, 81, 58, 1);
   --grey-2: rgba(163, 163, 163, 1);
   --grey-3: rgba(55, 55, 55, 0.2);
@@ -163,7 +163,7 @@ main {
 }
 
 .plans__cards__card__features__item--disabled {
-  opacity: 20%;
+  opacity: 40%;
   display: flex;
   padding: 10px 0;
   font-size: var(--body-2---regular);
