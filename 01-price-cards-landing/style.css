@@ -56,6 +56,8 @@ main {
   height: 85vh;
 }
 
+/* Header Section */
+
 .plans__header {
   margin: 0;
   display: flex;
@@ -69,6 +71,8 @@ main {
   font-weight: bold;
 }
 
+/* Cards Section */
+
 .plans__cards {
   display: flex;
   flex-wrap: wrap;
@@ -76,6 +80,8 @@ main {
   align-items: center;
   gap: 100px;
   padding: 40px;
+  background: var(--white);
+  border-radius: 30px
 }
 
 .plans__cards__card {
@@ -104,7 +110,7 @@ main {
   padding: 34px;
   border-radius: 26px;
   gap: 16px;
-  margin-top: -50px;
+  margin-top: -80px;
   position: relative;
 }
 
@@ -171,6 +177,7 @@ main {
   align-items: center;
   width: 20px;
   height: 20px;
+  aspect-ratio: 1;
   border-radius: 50%;
   background-color: var(--grey-3);
   background-image: url("./assets/Path.svg");
@@ -185,6 +192,7 @@ main {
   align-items: center;
   width: 20px;
   height: 20px;
+  aspect-ratio: 1;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.2);
   background-image: url("./assets/PathWhite.svg");
@@ -229,9 +237,14 @@ main {
 
 @media (max-width: 768px) {
 
+  main {
+    gap: 20px;
+  }
+
   .plans__cards {
     padding: 25px;
     gap: 50px;
+    background-color: transparent;
   }
 
   .plans__header__title {
@@ -241,9 +254,30 @@ main {
   .plans__cards__card {
     max-width: 100%;
     order: 1;
+    padding: 34px;
+    background-color: var(--white);
   }
 
   .plans__cards__card--highlight {
     max-width: 100%;
+    margin-top: 0;
   }
+}
+
+@media (max-width: 375px) {
+
+  .plans__cards {
+    padding: 25px;
+    gap: 50px;
+    background-color: transparent;
+  }
+
+  .plans__cards__card__title {
+    font-size: var(--headline-3);
+  }
+
+  .plans__cards__card__text {
+    font-size: var(--body-2---regular);
+  }
+
 }
