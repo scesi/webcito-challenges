@@ -1,0 +1,205 @@
+:root {
+  --color-primary: #ff8e3c;
+  --color-black: #373737;
+  --color-white: #ffffff;
+  --color-gray: #848199;
+}
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100dvh;
+}
+
+body {
+  background-color: #f5f5fa;
+  font-family: "Regular 400", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li {
+  position: relative;
+  padding-left: 24px;
+}
+
+ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEwIDBDNC40NzcxNSAwIDAgNC40NzcxNSAwIDEwQzAgMTUuNTIyOCA0LjQ3NzE1IDIwIDEwIDIwQzE1LjUyMjggMjAgMjAgMTUuNTIyOCAyMCAxMEMxOS45OTM2IDQuNDc5ODIgMTUuNTIwMiAwLjAwNjQyODk3IDEwIDBaIiBmaWxsPSIjMzczNzM3IiBmaWxsLW9wYWNpdHk9IjAuMiIvPgo8cGF0aCBkPSJNMTUuNzcyNSA2LjgzMzEzTDEwLjA2ODMgMTQuNTc0QzkuOTMyMjggMTQuNzU0NSA5LjcyOTQyIDE0Ljg3MjcgOS41MDUzMyAxNC45MDIyQzkuMjgxMjQgMTQuOTMxNiA5LjA1NDcyIDE0Ljg2OTggOC44NzY2NSAxNC43MzA2TDQuODAzMzEgMTEuNDc0QzQuNDQzODcgMTEuMTg2MyA0LjM4NTY3IDEwLjY2MTcgNC42NzMzMSAxMC4zMDIzQzQuOTYwOTYgOS45NDI4NSA1LjQ4NTU0IDkuODg0NjUgNS44NDQ5OCAxMC4xNzIzTDkuMjQxNjUgMTIuODg5OEwxNC40MzA4IDUuODQ3M0MxNC42MDEgNS41OTE5NSAxNC44OTc3IDUuNDUwNzggMTUuMjAzMiA1LjQ3OTgzQzE1LjUwODYgNS41MDg4NyAxNS43NzM0IDUuNzAzNDQgMTUuODkyNCA1Ljk4NjI3QzE2LjAxMTQgNi4yNjkxMSAxNS45NjUzIDYuNTk0NDUgMTUuNzcyNSA2LjgzMzEzWiIgZmlsbD0iIzM3MzczNyIvPgo8L3N2Zz4K");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1vw, 1rem);
+}
+
+.header__title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.header__subtitle {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: normal;
+  color: var(--color-gray);
+}
+
+.main-container {
+  width: 100%;
+  min-height: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-inline: clamp(2.125rem, 3vw, 5rem);
+  padding-block: clamp(2.125rem, 5vw, 4rem);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(2.125rem, 9vw, 7rem);
+}
+
+.price-cards {
+  display: flex;
+  background-color: var(--color-white);
+  border-radius: 1.5rem;
+  position: relative;
+}
+
+.price-card {
+  flex: 1;
+  min-height: 448px;
+  max-width: 380px;
+  padding: 1.3rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+
+  background-color: var(--color-white);
+  border-radius: 1.5rem;
+}
+
+.price-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+
+.price-card-frequency {
+  color: var(--color-gray);
+  font-weight: normal;
+  font-size: 1.3rem;
+}
+
+.price-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  color: var(--color-gray);
+}
+
+.price-card__description {
+  font-size: 1.2rem;
+}
+
+.price-card__features {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.price-card__btn-apply {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: rgba(255, 142, 60, 0.1);
+  color: var(--color-primary);
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.price-card--last {
+  order: 4;
+}
+
+.price-card--highlighted {
+  order: 4;
+  background-color: var(--color-primary);
+  position: relative;
+  top: -40px;
+  filter: drop-shadow(0px 42px 34px rgba(82, 67, 194, 0.3));
+}
+
+.price-card--highlighted .price-card__header,
+.price-card--highlighted .price-card-frequency,
+.price-card--highlighted .price-card__content {
+  color: var(--color-black);
+}
+
+.price-card--highlighted .price-card__btn-apply {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.price-card--highlighted .price-card__content .price-card__features li::before {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggb3BhY2l0eT0iMC4xIiBkPSJNMTAgMEM0LjQ3NzE1IDAgMCA0LjQ3NzE1IDAgMTBDMCAxNS41MjI4IDQuNDc3MTUgMjAgMTAgMjBDMTUuNTIyOCAyMCAyMCAxNS41MjI4IDIwIDEwQzE5Ljk5MzYgNC40Nzk4MiAxNS41MjAyIDAuMDA2NDI4OTcgMTAgMFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNS43NzI1IDYuODMzMTNMMTAuMDY4MyAxNC41NzRDOS45MzIyOSAxNC43NTQ1IDkuNzI5NDQgMTQuODcyNyA5LjUwNTM1IDE0LjkwMjJDOS4yODEyNiAxNC45MzE2IDkuMDU0NzMgMTQuODY5OCA4Ljg3NjY3IDE0LjczMDZMNC44MDMzMyAxMS40NzRDNC40NDM4OSAxMS4xODYzIDQuMzg1NjkgMTAuNjYxNyA0LjY3MzMzIDEwLjMwMjNDNC45NjA5OCA5Ljk0Mjg1IDUuNDg1NTUgOS44ODQ2NSA1Ljg0NSAxMC4xNzIzTDkuMjQxNjcgMTIuODg5OEwxNC40MzA4IDUuODQ3M0MxNC42MDEgNS41OTE5NSAxNC44OTc3IDUuNDUwNzggMTUuMjAzMiA1LjQ3OTgzQzE1LjUwODYgNS41MDg4NyAxNS43NzM0IDUuNzAzNDQgMTUuODkyNCA1Ljk4NjI3QzE2LjAxMTQgNi4yNjkxMSAxNS45NjUzIDYuNTk0NDUgMTUuNzcyNSA2LjgzMzEzWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==");
+}
+
+.price-card--basic .price-card__features li:not(:first-child) {
+  opacity: 0.2;
+}
+
+.price-card--intermediate .price-card__features li:nth-last-child(-n + 2) {
+  opacity: 0.2;
+}
+
+.price-card__highlighted-badge-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.price-card__highlighted-badge {
+  padding: 0.5rem 1rem;
+  background-color: #ffd5b6;
+  color: var(--color-black);
+  border-radius: 1rem;
+  font-size: 0.7rem;
+}
+
+@media screen and (max-width: 768px) {
+  .price-cards {
+    flex-direction: column;
+    background-color: transparent;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .price-card--highlighted {
+    order: 0;
+    top: 0;
+  }
+}
