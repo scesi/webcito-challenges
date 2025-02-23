@@ -23,6 +23,7 @@
 }
 
 #root {
+  height: 2300px;
   display: flex;
   flex-direction: column;
   align-items: center;
