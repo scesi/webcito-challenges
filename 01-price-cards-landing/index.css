@@ -21,9 +21,7 @@ body {
 
 .cards-container {
   background: white;
-  display: inline-flex;
-  flex-direction: row;
-  align-items: flex-start;
+  display: flex;
   border-radius: 26px;
 }
 
@@ -48,6 +46,7 @@ body {
 
 .card--price {
   color: black;
+  margin: 0px;
   font-size: 28px;
   font-style: normal;
   font-weight: 600;
@@ -63,6 +62,7 @@ body {
 
 .card--title {
   color: black;
+  margin: 0px;
   font-size: 28px;
   font-style: normal;
   font-weight: 600;
@@ -87,6 +87,59 @@ body {
   border-radius: 13.5px;
   background: #ffd5b6;
   color: #373737;
+}
+
+@media screen and (max-width: 426px) {
+  .container {
+    margin: 34px 34px;
+  }
+
+  .header-container {
+    h1 {
+      font-size: 28px;
+    }
+  }
+
+  .cards-container {
+    background: none;
+    flex-direction: column;
+    display: flex;
+    gap: 48px;
+  }
+
+  #card--orange {
+    order: -1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    margin: 40px 34px;
+  }
+
+  .cards-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .card {
+    flex: 1;
+    flex-basis: 30%;
+    margin-bottom: 10px;
+  }
+
+  #card--orange {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    margin: 100px 34px;
+  }
 }
 
 .button {
