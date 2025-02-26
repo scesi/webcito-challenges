@@ -1,6 +1,12 @@
+:root {
+  --primary: #ff8e3c;
+  --Black: #373737;
+  --Grey: #848199;
+}
+
 body {
   font-family: "Poppins", serif;
-  background: var(--Bg, #f5f5fa);
+  background: #f5f5fa;
 }
 
 .container {
@@ -14,8 +20,17 @@ body {
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-    color: #373737;
+    color: var(--Black);
     margin: 0px;
+  }
+  h2 {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--Grey);
+    margin: 0px;
+    padding-bottom: 35px;
   }
 }
 
@@ -26,28 +41,30 @@ body {
 }
 
 .card {
+  width: auto;
   padding: 29px;
+  flex-basis: 25%;
   gap: 16px;
   border-radius: 26px;
   background: white;
-  color: #848199;
+  color: var(--Grey);
 }
 
 #card--orange {
-  background: #ff8e3c;
+  background: var(--primary);
   background-image: url("assets/images/Group\ 30.png");
   background-repeat: no-repeat;
   background-position: right center;
   box-shadow: 0px 42px 34px 0px rgba(82, 67, 194, 0.3);
-  color: #373737;
+  color: var(--Black);
   position: relative;
   top: -50px;
   span {
-    color: #373737;
+    color: var(--Black);
   }
 }
 
-.card--price {
+.card__price {
   color: black;
   margin: 0px;
   padding-bottom: 10px;
@@ -56,7 +73,7 @@ body {
   font-weight: 600;
   line-height: normal;
   span {
-    color: #848199;
+    color: var(--Grey);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -64,7 +81,7 @@ body {
   }
 }
 
-.card--title {
+.card__title {
   color: black;
   margin: 0px;
   font-size: 28px;
@@ -73,18 +90,23 @@ body {
   line-height: normal;
 }
 
-.card--text-unavailable {
+.card__text-unavailable {
   opacity: 0.2;
 }
 
-.card--li-item {
+.card__list-container {
+  padding-left: 0;
+}
+
+.card__list-item {
   display: flex;
   align-items: center;
   font-size: 14px;
   gap: 12px;
+  padding-bottom: 10px;
 }
 
-.card--tag {
+.card__tag {
   width: fit-content;
   padding: 5px 18px;
   margin-left: 35%;
@@ -113,7 +135,7 @@ body {
     gap: 48px;
   }
 
-  .card--tag{
+  .card__tag {
     margin-left: 45%;
   }
 
@@ -140,10 +162,10 @@ body {
     margin-bottom: 10px;
   }
 
-  .card--tag{
+  .card__tag {
     margin-left: 45%;
-  } 
-  
+  }
+
   #card--orange {
     position: relative;
     top: 0;
@@ -152,7 +174,16 @@ body {
 
 @media screen and (max-width: 1024px) {
   .container {
-    margin: 100px 34px;
+    margin: 100px 60px;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .container {
+    margin: 100px 300px;
+  }
+  .card__tag {
+    margin-left: 60%;
   }
 }
 
@@ -174,7 +205,7 @@ body {
 
 .button--card-secondary {
   background: rgba(255, 142, 60, 0.1);
-  color: #ff8e3c;
+  color: var(--primary);
 }
 
 .button--card-primary {
