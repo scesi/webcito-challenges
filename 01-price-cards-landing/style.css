@@ -1,9 +1,15 @@
-
+:root{
+    --main-color:#FFFFFF;
+    --primary-color: #373737;
+    --second-color:#848199;
+    --third-color:#FF8E3C;
+    
+}
 body{
     font-family: "Poppins", serif;
     background-color: #F5F5FA;
     padding: 30px 90px;
-    color: #373737;
+    color: var(--primary-color);
 }
 
 .title{
@@ -29,7 +35,7 @@ body{
     gap: 8px;
 }
 .month{
-    color: #373737;
+    color: var(--primary-color);
     font-size: 16px;
     opacity: 50%;
     font-weight: 400;
@@ -38,23 +44,26 @@ body{
     color: #848199;
     font-size: 15px;
 }
-.proposal--premium{
-    color: #373737;
+.proposal__premium{
+    color: var(--primary-color);
     font-weight: 300;
 }
-.not--proposal{
+.not__proposal{
     opacity: 30%;
 }
 .card{
-    color: #373737;
+    justify-content: center;
+    color:var(--primary-color);
     margin-top: 100px;
-    background-color: #fff;
+    background-color: var(--main-color);
     border:  black;
     border-radius: 40px;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
 }
-.card--price{
+.card__price{
+    
+    width: 260px;
     padding: 20px 40px 40px 40px;
 }
 .plan{
@@ -63,8 +72,9 @@ body{
     font-weight: 600;
 }
 .btn{ 
+    margin-top: 30px;
     background-color:  #fcf4ec ;
-    color: #FF8E3C;
+    color: var(--third-color);
     border: none;
     border-radius: 40px;
     font-family: "Poppins", serif;
@@ -73,15 +83,16 @@ body{
     height: 50px;
     width: 100%;
 }
-.btn--color{
-    background-color: #373737;
-    color: #fff;
+.btn__color{
+    background-color: var(--primary-color);
+    color: var(--main-color);
 }
-.card--price--hover{
+.card__price__hover{
     display: flex;
-    width: 94%;
+    width: 350px;
 }
-.card--price--color{
+.card__price__color{
+    margin-left: 20px;
     margin-bottom: 40px;
     margin-top: -60px;
     box-shadow: -4px 30px 14px 10px rgba(164, 174, 249, 0.4);
@@ -89,15 +100,24 @@ body{
     width: 100%;
     border-radius: 30px;
     padding: 30px;
-    background-color: #FF8E3C;
+    background-color: var(--third-color);
+}
+.popular{
+    display: flex;
+    margin: -10px -10px -20px 140px;
+    border-radius: 30px;
+    background-color: #FFD5B6;
+    font-weight: 500;
+    justify-content: center;
 }
 
-@media (max-width:360px) {
-    body{
-        padding: 16px 34px;
-        background-color: #F5F5FA;
-        
-    }
+q::before {
+    content: url("icons/check-black.svg");
+}
+o::before{
+    content: url("icons/check-white.svg");
+}
+@media (max-width:1250px) {
     .title{
        font-size: 24px;
        text-align: left;
@@ -109,37 +129,38 @@ body{
         font-size: 15px;
     }
     .card{
+        background-color:#F5F5FA ;
         margin-top: 100px;
         border-radius: 40px;
-        background-color: #F5F5FA;
-        display: grid;
-        grid-template-columns: repeat(1,minmax(300px,1fr));
-        gap: 50px;
+        gap: 30px;
         justify-content: center;
     }
-    .card--price{
-        width: 220px;
+    .card__price{
+        background-color: var(--main-color);
+        width: 230px;
         border-radius: 30px;
-        background-color: #fff;
+        
     }
-    .card--price--hover{
-        width: 300px;
-        color: #373737;
+    .card__price__hover{
+        order: -1;
+        width: 310px;
+        color: var(--primary-color);
     }
-    .card--price--color{
+    .card__price__color{
+        
         margin: 0 ;
         box-shadow: -4px 30px 14px 10px rgba(164, 174, 249, 0.4);
-        color: #373737;
+        color: var(--primary-color);
         border-radius: 30px;
         padding: 20px 40px 40px 40px;
-        background-color: #FF8E3C;
+        background-color: var(--third-color);
     }
     .proposal{
-        color: #373737;
+        color: var(--primary-color);
         font-size: 13px;
     }
     .description-plan{
-        color: #373737;
+        color: var(--primary-color);
         font-size: 15px;
     }
     .plan{
@@ -147,5 +168,15 @@ body{
         margin: 12px 0 8px 0;
         font-weight: 600;
     }
+    .popular{
+        padding: 1px 4px 1px 5px;
+        font-size: 13px;
+        margin: 0px -10px -20px 140px;
+        border-radius: 30px;
+        background-color: #FFD5B6;
+        font-weight: 600;
+        justify-content: center;
+    }
     
 }
+
