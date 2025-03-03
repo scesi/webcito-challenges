@@ -1,0 +1,135 @@
+body {
+   padding: 10%;
+   font-family: "Poppins", serif;
+   background: var(--Bg, #f5f5fa);
+}
+
+.title {
+   color: var(--Black, #373737);
+   font-size: 28px;
+   font-weight: 600;
+}
+.description {
+   color: var(--Grey, #848199);
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 24px;
+}
+
+.card {
+   box-sizing: border-box;
+   padding: 29px;
+   border-radius: 26px;
+   transition: background 0.5s, transform 0.5s;
+   background: var(--White, #fff);
+   color: var(--Black, #373737);
+   /*Tamaño*/
+   max-width: 315px;
+   min-height: 480px;
+}
+
+.card:hover {
+   box-shadow: 0px 42px 34px 0px rgba(82, 67, 194, 0.3);
+   background: #ff8e3c;
+   transform: translateY(-10px);
+}
+
+.card:hover .list__item::before {
+   content: "";
+   position: absolute;
+   transform: translateX(-150%);
+   width: 20px;
+   height: 20px;
+   background-image: url("./svg/check.svg");
+   filter: invert(0%);
+}
+
+.card:hover .card__button__plan {
+   color: var(--White, #fff);
+   background: var(--Black, #373737);
+}
+
+.card:hover .card__button__plan:hover {
+   color: orange;
+   background: white;
+}
+
+.header__title {
+   display: flex;
+   align-items: center;
+}
+.header__title__grant {
+   font-size: 28px;
+   font-weight: 600;
+}
+.header__title__tiny {
+   font-size: 16px;
+   margin-left: 8px;
+   font-weight: 400;
+}
+
+.header__button {
+   display: flex;
+   justify-content: end;
+}
+.header_button__popular {
+   width: 121px;
+   height: 27px;
+   border: 0px;
+   border-radius: 13.5px;
+   background: #ffd5b6;
+   color: var(--Black, #373737);
+   text-align: center;
+   font-size: 12px;
+   font-weight: 600;
+}
+
+.subtitle {
+   font-size: 28px;
+   font-weight: 600;
+   margin-block: 0px;
+}
+
+.list {
+   padding-bottom: 16px;
+}
+
+.list__item {
+   list-style: none;
+   margin-left: 29px;
+   margin-block: 16px;
+   font-size: 14px;
+   line-height: 24px;
+}
+.list__item::before {
+   content: "";
+   position: absolute;
+   transform: translateX(-150%);
+   transition: filter 0.5s;
+   width: 20px;
+   height: 20px;
+   background-image: url("./svg/check.svg");
+   filter: invert(100%);
+}
+
+.card__button {
+   display: flex;
+}
+
+.card__button__plan {
+   color: var(--Primary, #ff8e3c);
+   border: none;
+   text-align: center;
+   font-size: 16px;
+   font-style: normal;
+   font-weight: 700;
+   line-height: 24px;
+   padding: 12px 32px;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
+   flex: 1 0 0;
+   border-radius: 90px;
+   background: #ff8e3c1a;
+   transition: all 0.5s;
+}
