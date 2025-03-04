@@ -12,6 +12,7 @@ body {
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
+   border-radius: 29px;
 }
 
 .title {
@@ -180,9 +181,8 @@ body {
       padding: 130px;
    }
    .cards {
-      background-color: #fff;
-      border-radius: 3%;
-      width: fit-content;
+      background-color: #ffffff;
+      max-width: m-content;
       margin-block: 100px;
    }
    .title {
@@ -200,13 +200,14 @@ body {
    }
 }
 
-@media (min-width: 768px) and (max-width: 1534px) {
+@media (min-width: 768px) and (max-width: 1536px) {
    body {
       padding: 90px;
    }
    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       background-color: #fff;
-      border-radius: 2%;
       width: max-content;
       margin-block: 100px;
    }
