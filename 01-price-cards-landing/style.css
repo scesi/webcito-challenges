@@ -241,8 +241,13 @@ main {
     gap: 20px;
   }
 
+  .plans {
+    margin-inline: 5%;
+  }
+
   .plans__cards {
     padding: 25px;
+    flex-wrap: wrap;
     gap: 50px;
     background-color: transparent;
   }
@@ -261,13 +266,22 @@ main {
   .plans__cards__card--highlight {
     max-width: 100%;
     margin-top: 0;
+    gap: 10px;
+  }
+
+  .plans__cards__card__features__item {
+    display: flex;
+    padding: 10px 0;
+    font-size: var(--body-2---regular);
+    list-style: none;
+    gap: 10px;
   }
 }
 
 @media (max-width: 375px) {
 
   .plans__cards {
-    padding: 25px;
+    padding: 0px;
     gap: 50px;
     background-color: transparent;
   }
