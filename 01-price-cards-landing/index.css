@@ -9,9 +9,9 @@ body {
   background: #f5f5fa;
 }
 
-.container {
+/* .container {
   margin: 128px 135px;
-}
+} */
 
 .header-container {
   padding-bottom: 80px;
@@ -34,16 +34,10 @@ body {
   }
 }
 
-.cards-container {
-  background: white;
-  display: flex;
-  border-radius: 26px;
-}
-
 .card {
   width: auto;
   padding: 29px;
-  flex-basis: 25%;
+  margin-bottom: 10px;
   gap: 16px;
   border-radius: 26px;
   background: white;
@@ -107,19 +101,24 @@ body {
 }
 
 .card__tag {
-  width: fit-content;
-  padding: 5px 18px;
-  margin-left: 35%;
-  margin-bottom: 10px;
-  border-radius: 13.5px;
-  background: #ffd5b6;
-  color: #373737;
-  font-weight: 600;
+  display: flex;
+  justify-content: flex-end;
+
+  p {
+    width: fit-content;
+    padding: 5px 18px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    border-radius: 13.5px;
+    background: #ffd5b6;
+    color: #373737;
+    font-weight: 600;
+  }
 }
 
 @media screen and (max-width: 426px) {
   .container {
-    margin: 34px 34px;
+    margin: 40px 36px;
   }
 
   .header-container {
@@ -129,14 +128,15 @@ body {
   }
 
   .cards-container {
-    background: none;
-    flex-direction: column;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 48px;
   }
 
-  .card__tag {
-    margin-left: 45%;
+  .card {
+    flex: 1;
+    flex-basis: 100%;
   }
 
   #card--orange {
@@ -144,9 +144,9 @@ body {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   .container {
-    margin: 40px 34px;
+    margin: 40px 50px;
   }
 
   .cards-container {
@@ -159,31 +159,32 @@ body {
   .card {
     flex: 1;
     flex-basis: 30%;
-    margin-bottom: 10px;
-  }
-
-  .card__tag {
-    margin-left: 45%;
   }
 
   #card--orange {
-    position: relative;
-    top: 0;
+    order: -1;
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (min-width: 1088px) {
   .container {
-    margin: 100px 60px;
+    margin: 100px 100px;
   }
-}
+  .cards-container {
+    background: white;
+    border-radius: 26px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
 
-@media screen and (min-width: 2560px) {
-  .container {
-    margin: 100px 300px;
+  .card {
+    flex: 1;
+    gap: 0px;
   }
-  .card__tag {
-    margin-left: 60%;
+
+  #card--orange {
+    order: 0;
   }
 }
 
