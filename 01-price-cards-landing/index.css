@@ -1,6 +1,6 @@
 body {
    padding: 10%;
-   font-family: "Poppins", serif;
+   font-family: "Poppins", Arial, sans-serif;
    background: var(--Bg, #f5f5fa);
 }
 
@@ -70,28 +70,28 @@ body {
    transform: translateY(10%);
 }
 
-.header__title {
+.card__header__title {
    display: flex;
    align-items: center;
    height: 70px;
 }
-.header__title__grant {
+.card__header__title--grant {
    font-size: 28px;
    font-weight: 600;
 }
-.header__title__tiny {
+.card__header__title--tiny {
    font-size: 16px;
    margin-left: 8px;
    font-weight: 400;
 }
 
-.header__info {
+.card__header__info {
    display: flex;
    height: auto;
    height: 27px;
    justify-content: end;
 }
-.header__info__popular {
+.card__header__info--popular {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -105,24 +105,24 @@ body {
    font-weight: 600;
 }
 
-.subtitle {
+.card__subtitle {
    font-size: 28px;
    font-weight: 600;
    margin-block: 0px;
 }
 
-.list {
+.card__subtitle__list {
    padding-bottom: 16px;
 }
 
-.list__item {
+.card__subtitle__list__item {
    list-style: none;
    margin-left: 29px;
    margin-block: 16px;
    font-size: 14px;
    line-height: 24px;
 }
-.list__item::before {
+.card__subtitle__list__item::before {
    content: "";
    position: absolute;
    transform: translateX(-150%);
@@ -133,7 +133,7 @@ body {
    filter: invert(100%);
 }
 
-.list__item__inverse {
+.card__subtitle__list__item--inverse {
    list-style: none;
    margin-left: 29px;
    margin-block: 16px;
@@ -142,7 +142,7 @@ body {
    filter: invert(100%);
 }
 
-.list__item__inverse::before {
+.card__subtitle__list__item--inverse::before {
    content: "";
    position: absolute;
    transform: translateX(-150%);
