@@ -1,109 +1,126 @@
+import { parseTimeToInt, parseIntToTime } from "./utils/time-parser.js";
+
 class TimerComponent extends HTMLElement {
   constructor() {
     super();
-    this.remainingTime = parseInt(this.getAttribute("time")) || 0;
+    this.remainingTime = parseTimeToInt(this.getAttribute("time")) || "00:00";
     this.totalTime = this.remainingTime;
     this.attachShadow({ mode: "open" });
-    this.switch = this.getAttribute("switch") == "true";
+    this.switch = this.getAttribute("switch") === "true";
+    this.timecolor = this.getAttribute("timecolor") || "red";
+    this.width = this.getAttribute("width") || 100;
     this.interval = null;
-    this.width = this.getAttribute("width") || "100";
   }
 
   getTemplate() {
     const template = document.createElement("template");
     template.innerHTML = /*HTML*/ `
       <article>
-        <div class="progress"></div>
-        <div class="center">
-        <h2>${this.remainingTime}</h2>
+        <div class="progress" >
+          <svg width=${this.width} height=${this.width}> 
+            <circle 
+              r=${this.width / 2} 
+              cx="50%" 
+              cy="50%" 
+              fill="none" 
+              stroke=${this.timecolor} 
+              stroke-width="6"
+              stroke-dasharray="0 100" 
+              pathlength=100 
+              stroke-linecap=round
+            ></circle>
+            <circle 
+              r=${this.width / 2} 
+              cx="50%" 
+              cy="50%" 
+              fill="none" 
+              stroke=${this.timecolor} 
+              stroke-width="6" 
+              stroke-dasharray="100 100" 
+              pathlength=100 
+              stroke-linecap=round 
+              opacity="0.3"
+            ></circle>
+          </svg>
+          <h2>${parseIntToTime(this.remainingTime)}</h2>
         </div>
       </article>
-      <style>
-        article {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: red;
-          width: ${this.width}px;
-          aspect-ratio: 1 / 1;
-          border-radius: 50%;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .center {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: white;
-          width: ${this.width - 10}px;
-          aspect-ratio: 1 / 1;
-          border-radius: 50%;
-          z-index:100;
-        }
-
-        .progress {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          background: red;
-          transition: transform 1s linear;
-        }
-
-        h2 {
-          position: relative;
-          z-index: 110;
-
-        }
-      </style>
+      ${this.getStyle()}
     `;
     return template;
   }
 
-  updateDisplay() {
-    if (this.shadowRoot) {
-      this.shadowRoot.querySelector("h2").textContent = this.remainingTime;
-      const progress = this.shadowRoot.querySelector(".progress");
-      
-      if (progress) {
-        let percentage = (this.remainingTime / this.totalTime) * 360;
-        
-        progress.style.background = `conic-gradient(red ${percentage}deg, white ${percentage}deg)`;
-      }
-    }
+  getStyle() {
+    return /* CSS */ `
+      <style>
+        svg {
+          width: ${this.width + 10}px;
+          height: ${this.width + 10}px;
+          display: block;
+        }
+        circle {
+          width:150px;
+          transform: rotate(-90deg);
+          transform-origin: 50% 50%;
+          transition: stroke-dasharray 1s linear;
+        }
+        h2 {
+          position: absolute;
+          text-align: center;
+          font-family: Arial, sans-serif;
+          color: ${this.timecolor};
+        }
+        .progress {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: ${this.width + 20}px;
+          height: ${this.width + 20}px;
+        }
+      </style>
+    `;
   }
-  
+
+  updateDisplay() {
+    const progress =
+      ((this.totalTime - this.remainingTime) * 100) / this.totalTime;
+    console.log(progress);
+
+    setTimeout(() => {
+      this.circle.setAttribute("stroke-dasharray", `${progress} 100`);
+    }, 100);
+
+    setTimeout(() => {
+      this.timeDisplay.textContent = parseIntToTime(this.remainingTime);
+    }, 900);
+  }
 
   startTimer() {
-    if (this.remainingTime === 0) return "finish";
-
+    if (this.interval) return;
     this.interval = setInterval(() => {
       if (this.remainingTime > 0) {
         this.remainingTime--;
         this.updateDisplay();
       } else {
         clearInterval(this.interval);
+        this.circle.setAttribute("stroke", "none");
+        this.interval = null;
       }
     }, 1000);
   }
 
   render() {
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
+    this.circle = this.shadowRoot.querySelector("circle");
+    this.timeDisplay = this.shadowRoot.querySelector("h2");
+    this.updateDisplay();
   }
 
   connectedCallback() {
     this.render();
     if (this.switch) {
       this.startTimer();
-    }
-  }
-
-  disconnectedCallback() {
-    if (this.interval) {
-      clearInterval(this.interval);
     }
   }
 }
