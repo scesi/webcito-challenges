@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  box-sizing: border-box; /* Asegura un box-sizing consistente */
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #172030;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.title {
+  color: #f2f2f2;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #141c27;
+  padding: 50px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 9px 9px 16px rgba(0, 0, 0, 0.4),
+    -4px -4px 16px rgba(73, 73, 73, 0.4);
+  gap: 1rem;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.balloon {
+  background-color: #1a2538;
+  width: 25rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 9px 9px 16px rgba(0, 0, 0, 0.24),
+    -4px -4px 16px rgba(73, 73, 73, 0.4);
+}
+
+.one,
+.two {
+  display: flex;
+}
+
+.one {
+  margin-bottom: -50px;
+  margin-left: -50px;
+  align-self: flex-end;
+}
+
+.two {
+  background-color: #172030;
+  margin-top: -50px;
+  margin-right: -50px;
+  align-self: flex-start;
+}

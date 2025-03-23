@@ -78,4 +78,3 @@ Para mejorar juntos:
 Recuerda: **La mejor forma de aprender a programar es programando**. 💻🔥
 
 ¡Diviértete creando tu Pomodoro Tracker! 🍅⏳
-
