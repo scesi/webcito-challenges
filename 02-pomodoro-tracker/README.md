@@ -1,54 +1,46 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🍅 Contenido de refuerzo 
+https://www.webtutoriales.com/articulos/2023/12/22/svg-progreso-circular-animado/?utm_source=chatgpt.com
+https://javascript.plainenglish.io/how-to-build-a-pomodoro-timer-in-react-55c05a323494
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# 🍅 Webcito Challenge - Pomodoro Tracker
 
-## Expanding the ESLint configuration
+Bienvenido al reto **Pomodoro Tracker**, parte de los desafíos de **Webcito Challenges**. En este reto, desarrollarás tu propia versión del método Pomodoro, un técnica de administración del tiempo que te ayudará a mejorar tu enfoque y productividad.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📝 Descripción del Proyecto
+Cuando tu energía se concentra en una sola cosa, te vuelves más poderoso. Pomodoro es un método que permite mejorar la administración del tiempo dedicado a una actividad. Tu reto será desarrollar tu propia versión de Pomodoro dándole un diseño único y diferenciador.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+🔗 **Diseño en Figma**: [Enlace al diseño](https://www.figma.com/design/R0uOaMMuxcVBvdcDhG72uY/Pomodoro_Tracker?node-id=0-1&t=Zh19H6CjqYnSIzDv-1)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📌 Requisitos
+- Estilo libre. Lleva el diseño al código utilizando tu framework favorito o con HTML y CSS, sin ninguna limitación.
+- El Pomodoro siempre deberá iniciar con una cuenta regresiva de **25 minutos**.
+- Al iniciar el Pomodoro, el botón de **Iniciar Pomodoro** deberá cambiar su texto.
+- Al iniciar el Pomodoro, el botón de **Pausar Pomodoro** se habilitará.
+- Al pausar el Pomodoro, el botón deberá cambiar su texto.
+- El usuario podrá iniciar un **Break** mientras está en un Pomodoro. Al hacer clic, la interfaz cambiará a la vista de **Break** con una cuenta regresiva de **5 minutos**.
+- Después de completar un Pomodoro o un Break, se deberá mostrar un contador con el número de Pomodoros/Breaks realizados.
+- La aplicación debe ser **responsive**, cubriendo todas las resoluciones del diseño.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 🎯 Objetivos principales
+Para completar el reto, marca los siguientes hitos:
+
+- [x] Implementar la cuenta regresiva de **25 minutos** para Pomodoro y **5 minutos** para Break.
+- [x] Cambiar el texto del botón de **Iniciar/Pausar Pomodoro** según el estado del temporizador.
+- [x] Permitir que el usuario inicie un **Break** mientras está en un Pomodoro.
+- [x] Mostrar un **contador** de Pomodoros/Breaks completados.
+- [x] Asegurar que el diseño sea **responsive**.
+- [x] Implementar una forma de **desplegar** la aplicación en línea.
+
+## 🚀 Objetivos secundarios
+Si quieres llevar tu implementación al siguiente nivel, intenta cumplir con estos retos adicionales:
+
+- [x] Implementar notificaciones sonoras al finalizar cada ciclo de Pomodoro o Break
+- [x] Añadir un historial de sesiones completadas utilizando almacenamiento local (localStorage)
+- [x] Optimizar el rendimiento para conseguir un puntaje superior a 90 en PageSpeed Insights
+- [x] Utilizar patrones avanzados de JavaScript como módulos, closures o el patrón Observer
+- [x] Implementar un tema oscuro/claro con CSS variables y JavaScript
+- [x] Crear tests unitarios para las funciones principales de la aplicación
+- [x] Optimizar la aplicación para funcionar sin conexión (PWA)
