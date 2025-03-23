@@ -1,0 +1,12 @@
+.buttons {
+  box-shadow: 2px 3px 5px 5px #272829;
+  cursor: pointer;
+  background-color: var(--button-color);
+  border-radius: 10px;
+  margin-top: 10px;
+  display: grid;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px 30px;
+}
