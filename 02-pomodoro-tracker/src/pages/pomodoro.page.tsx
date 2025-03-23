@@ -60,13 +60,13 @@ export const PomodoroPage = () => {
         <article className="timer__circle">
           <svg width="220" height="220" className="timer__progress">
             <circle
-              className="timer__progress-background"
+              className={`${isBreak ? 'timer__progress-background--break' : 'timer__progress-background'}`}
               cx="110"
               cy="110"
               r="100"
             />
             <circle
-              className="timer__progress-circle"
+              className={`${isBreak ? 'timer__progress-circle--break' : 'timer__progress-circle'}`}
               cx="110"
               cy="110"
               r="100"
@@ -74,7 +74,7 @@ export const PomodoroPage = () => {
               strokeDashoffset={offset}
             />
           </svg>
-          <div className="timer__time">{formatTime(timeLeft)}</div>
+          <div className={`${isBreak ? 'timer__time--break' : 'timer__time'}`}>{formatTime(timeLeft)}</div>
         </article>
         
         {!isRunning && !isBreak ? (
