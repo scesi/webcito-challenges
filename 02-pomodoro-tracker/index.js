@@ -1,3 +1,4 @@
+
 const primaryButton = document
   .querySelector("#primarybtn")
   .addEventListener("click", () => {
