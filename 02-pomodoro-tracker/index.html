@@ -3,10 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Pomodoro Tracker</title>
   </head>
   <body>
-    <my-timer time=30 switch=true></my-timer>
+    <div class="balloon one"></div>
+    <main class="container">
+      <h1 class="title">Pomodoro Tracker</h1>
+      <my-timer
+        id="timer"
+        time="01:10"
+        switch="false"
+        timecolor="#465BE0"
+        width="150"
+      ></my-timer>
+      <div class="buttons">
+        <button-component
+          id="primarybtn"
+          text="Start Pomodoro"
+        ></button-component>
+        <button-component
+          id="secondarybtn"
+          text="Start Pomodoro"
+          type="dangerbtn"
+        ></button-component>
+      </div>
+    </main>
+    <div class="balloon two"></div>
+    <script src="./index.js"></script>
+    <script type="module" src="./button-component/button.js"></script>
     <script type="module" src="./timer-component/timer.js"></script>
   </body>
 </html>

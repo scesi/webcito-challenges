@@ -8,7 +8,7 @@ class TimerComponent extends HTMLElement {
     this.attachShadow({ mode: "open" });
     this.switch = this.getAttribute("switch") === "true";
     this.timecolor = this.getAttribute("timecolor") || "red";
-    this.width = this.getAttribute("width") || 100;
+    this.width = parseInt(this.getAttribute("width")) || 100;
     this.interval = null;
   }
 
@@ -24,7 +24,7 @@ class TimerComponent extends HTMLElement {
               cy="50%" 
               fill="none" 
               stroke=${this.timecolor} 
-              stroke-width="6"
+              stroke-width="10"
               stroke-dasharray="0 100" 
               pathlength=100 
               stroke-linecap=round
@@ -35,7 +35,7 @@ class TimerComponent extends HTMLElement {
               cy="50%" 
               fill="none" 
               stroke=${this.timecolor} 
-              stroke-width="6" 
+              stroke-width="10" 
               stroke-dasharray="100 100" 
               pathlength=100 
               stroke-linecap=round 
@@ -94,6 +94,13 @@ class TimerComponent extends HTMLElement {
     setTimeout(() => {
       this.timeDisplay.textContent = parseIntToTime(this.remainingTime);
     }, 900);
+  }
+
+  setAttribute(name, value) {
+    super.setAttribute(name, value);
+    if (name === "switch" && value === "true") {
+      this.startTimer();
+    }
   }
 
   startTimer() {
