@@ -26,6 +26,12 @@ export const PomodoroPage = () => {
         setIsRunning(!isRunning);
     };
 
+    const togglePomodoro = () => {
+        setTimeLeft(25 * 60); 
+        setIsBreak(false);
+        setIsRunning(true);
+    }
+
     const togglePause = () => {
         setIsRunning(false);
     }
@@ -83,7 +89,7 @@ export const PomodoroPage = () => {
                 (
                 <button 
                 className={`timer__button ${isRunning ? 'timer__button--pause' : ''}`}
-                onClick={toggleTimer}
+                onClick={togglePomodoro}
                 >
                 Start Pomodoro
                 </button>
@@ -108,7 +114,7 @@ export const PomodoroPage = () => {
             {!isRunning ? (
                 <button 
                 className={`timer__button ${isRunning ? 'timer__button--pause' : ''}`}
-                onClick={toggleTimer}
+                onClick={togglePomodoro}
                 >
                 Start Pomodoro
                 </button>
