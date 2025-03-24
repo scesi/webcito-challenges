@@ -2,7 +2,7 @@
   margin: 0;
   box-sizing: border-box; /* Asegura un box-sizing consistente */
 }
-
+  
 body {
   font-family: "Roboto", sans-serif;
   background-color: #172030;
@@ -29,7 +29,6 @@ body {
   justify-content: center;
   background-color: #141c27;
   padding: 50px;
-  overflow: hidden;
   border-radius: 20px;
   box-shadow: 9px 9px 16px rgba(0, 0, 0, 0.4),
     -4px -4px 16px rgba(73, 73, 73, 0.4);

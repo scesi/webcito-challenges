@@ -5,7 +5,7 @@ class ButtonComponent extends HTMLElement {
     this.type = this.getAttribute("type") || "normalbtn";
     this.isDisabled = this.hasAttribute("disabled");
     this.action = this.getAttribute("action") || "click";
-
+    this.width = this.getAttribute("width") || "100";
     this.attachShadow({ mode: "open" });
   }
 
@@ -13,7 +13,7 @@ class ButtonComponent extends HTMLElement {
     const template = document.createElement("template");
     template.innerHTML = /* HTML */ `
       <button class="${this.type}" ${this.isDisabled ? "disabled" : ""}>
-        ${this.text}
+        ${this.getButtonText()}
       </button>
       ${this.getStyle()}
     `;
@@ -25,7 +25,7 @@ class ButtonComponent extends HTMLElement {
     <style>
     .dangerbtn {
         display: flex;
-        min-width: 100px;
+        min-width: ${this.width}px;
         max-width: 250px;
         font-size: 1rem;
         font-weight: 500;
@@ -41,7 +41,7 @@ class ButtonComponent extends HTMLElement {
     }
     .normalbtn {
         display: flex;
-        min-width: 100px;
+        min-width: ${this.width}px;
         max-width: 250px;
         font-size: 1rem;
         font-weight: 500;
@@ -63,6 +63,24 @@ class ButtonComponent extends HTMLElement {
   `;
   }
 
+  setAttribute(name, value) {
+    super.setAttribute(name, value);
+    if (name === "text") {
+      this.text = value;
+      this.updateButtonText();
+    }
+  }
+
+  getButtonText() {
+    return this.text;
+  }
+
+  updateButtonText() {
+    if (this.button) {
+      this.button.textContent = this.text;
+    }
+  }
+
   render() {
     this.shadowRoot.innerHTML = "";
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
@@ -81,15 +99,19 @@ class ButtonComponent extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["disabled"];
+    return ["disabled", "text"];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
     if (name === "disabled") {
       this.isDisabled = newValue !== null;
       this.render();
+    } else if (name === "text") {
+      this.text = newValue;
+      this.updateButtonText();
     }
   }
 }
 
 customElements.define("button-component", ButtonComponent);
+  

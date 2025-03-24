@@ -3,42 +3,65 @@ import { parseTimeToInt, parseIntToTime } from "./utils/time-parser.js";
 class TimerComponent extends HTMLElement {
   constructor() {
     super();
-    this.remainingTime = parseTimeToInt(this.getAttribute("time")) || "00:00";
+    const font = document.createElement("link");
+    font.rel = "stylesheet";
+    font.href =
+      "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
+    document.head.appendChild(font);
+    this.remainingTime = parseTimeToInt(this.getAttribute("time")) || 0;
     this.totalTime = this.remainingTime;
     this.attachShadow({ mode: "open" });
     this.switch = this.getAttribute("switch") === "true";
     this.timecolor = this.getAttribute("timecolor") || "red";
     this.width = parseInt(this.getAttribute("width")) || 100;
     this.interval = null;
+    this.isPaused = false;
+  }
+
+  static get observedAttributes() {
+    return ["time", "switch"];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "time" && oldValue !== newValue) {
+      this.setTime(newValue);
+    }
+    if (name === "switch") {
+      if (newValue === "true") {
+        this.startTimer();
+      } else {
+        this.pauseTimer();
+      }
+    }
   }
 
   getTemplate() {
     const template = document.createElement("template");
     template.innerHTML = /*HTML*/ `
       <article>
-        <div class="progress" >
-          <svg width=${this.width} height=${this.width}> 
+        <div class="progress">
+          <svg width="${this.width}" height="${this.width}"> 
             <circle 
-              r=${this.width / 2} 
-              cx="50%" 
-              cy="50%" 
-              fill="none" 
-              stroke=${this.timecolor} 
+              r="${this.width / 2}"
+              cx="50%"
+              cy="50%"
+              fill="none"
+              stroke="${this.timecolor}"
               stroke-width="10"
               stroke-dasharray="0 100" 
-              pathlength=100 
-              stroke-linecap=round
+              pathlength="100" 
+              stroke-linecap="round"
             ></circle>
             <circle 
-              r=${this.width / 2} 
-              cx="50%" 
-              cy="50%" 
-              fill="none" 
-              stroke=${this.timecolor} 
+              r="${this.width / 2}"
+              cx="50%"
+              cy="50%"
+              fill="none"
+              stroke="${this.timecolor}"
               stroke-width="10" 
               stroke-dasharray="100 100" 
-              pathlength=100 
-              stroke-linecap=round 
+              pathlength="100" 
+              stroke-linecap="round" 
               opacity="0.3"
             ></circle>
           </svg>
@@ -53,13 +76,16 @@ class TimerComponent extends HTMLElement {
   getStyle() {
     return /* CSS */ `
       <style>
+        article {
+          font-family: 'Roboto', sans-serif;
+        }
+
         svg {
           width: ${this.width + 10}px;
           height: ${this.width + 10}px;
           display: block;
         }
         circle {
-          width:150px;
           transform: rotate(-90deg);
           transform-origin: 50% 50%;
           transition: stroke-dasharray 1s linear;
@@ -67,6 +93,7 @@ class TimerComponent extends HTMLElement {
         h2 {
           position: absolute;
           text-align: center;
+          font-size: 2.5rem;
           font-family: Arial, sans-serif;
           color: ${this.timecolor};
         }
@@ -83,23 +110,29 @@ class TimerComponent extends HTMLElement {
   }
 
   updateDisplay() {
+    if (!this.circle || !this.timeDisplay) return;
     const progress =
       ((this.totalTime - this.remainingTime) * 100) / this.totalTime;
-    console.log(progress);
-
-    setTimeout(() => {
-      this.circle.setAttribute("stroke-dasharray", `${progress} 100`);
-    }, 100);
-
-    setTimeout(() => {
-      this.timeDisplay.textContent = parseIntToTime(this.remainingTime);
-    }, 900);
+    this.circle.setAttribute("stroke-dasharray", `${progress} 100`);
+    this.timeDisplay.textContent = parseIntToTime(this.remainingTime);
   }
 
-  setAttribute(name, value) {
-    super.setAttribute(name, value);
-    if (name === "switch" && value === "true") {
-      this.startTimer();
+  setTime(value) {
+    this.remainingTime = parseTimeToInt(value);
+    this.totalTime = this.remainingTime;
+    this.pauseTimer();
+    if (this.interval) {
+      clearInterval(this.interval);
+      this.interval = null;
+    }
+    this.updateDisplay();
+  }
+
+  pauseTimer() {
+    if (this.interval) {
+      clearInterval(this.interval);
+      this.interval = null;
+      this.isPaused = true;
     }
   }
 
@@ -110,6 +143,7 @@ class TimerComponent extends HTMLElement {
         this.remainingTime--;
         this.updateDisplay();
       } else {
+        this.pauseTimer();
         clearInterval(this.interval);
         this.circle.setAttribute("stroke", "none");
         this.interval = null;
@@ -118,6 +152,7 @@ class TimerComponent extends HTMLElement {
   }
 
   render() {
+    this.shadowRoot.innerHTML = "";
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
     this.circle = this.shadowRoot.querySelector("circle");
     this.timeDisplay = this.shadowRoot.querySelector("h2");
