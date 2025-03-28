@@ -1,4 +1,5 @@
 import { parseTimeToInt, parseIntToTime } from "./utils/time-parser.js";
+import { playSound } from "./utils/notification.js";
 
 class TimerComponent extends HTMLElement {
   constructor() {
@@ -151,6 +152,7 @@ class TimerComponent extends HTMLElement {
         this.dispatchEvent(
           new CustomEvent("timer-finished", { bubbles: true })
         );
+        playSound();
       }
     }, 1000);
   }
