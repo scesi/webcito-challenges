@@ -16,6 +16,7 @@ class TimerComponent extends HTMLElement {
     this.width = parseInt(this.getAttribute("width")) || 100;
     this.interval = null;
     this.isPaused = false;
+    this.isFinished = false;
   }
 
   static get observedAttributes() {
@@ -143,10 +144,13 @@ class TimerComponent extends HTMLElement {
         this.remainingTime--;
         this.updateDisplay();
       } else {
-        this.pauseTimer();
+        this.isFinished = true;
         clearInterval(this.interval);
-        this.circle.setAttribute("stroke", "none");
         this.interval = null;
+        this.updateDisplay();
+        this.dispatchEvent(
+          new CustomEvent("timer-finished", { bubbles: true })
+        );
       }
     }, 1000);
   }

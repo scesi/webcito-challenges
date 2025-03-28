@@ -23,12 +23,12 @@ Cuando tu energía se concentra en una sola cosa, te vuelves más poderoso. Pomo
 
 Para completar el reto, marca los siguientes hitos:
 
-- [ ] Implementar la cuenta regresiva de **25 minutos** para Pomodoro y **5 minutos** para Break.
-- [ ] Cambiar el texto del botón de **Iniciar/Pausar Pomodoro** según el estado del temporizador.
-- [ ] Permitir que el usuario inicie un **Break** mientras está en un Pomodoro.
-- [ ] Mostrar un **contador** de Pomodoros/Breaks completados.
-- [ ] Asegurar que el diseño sea **responsive**.
-- [ ] Implementar una forma de **desplegar** la aplicación en línea.
+- [X] Implementar la cuenta regresiva de **25 minutos** para Pomodoro y **5 minutos** para Break.
+- [X] Cambiar el texto del botón de **Iniciar/Pausar Pomodoro** según el estado del temporizador.
+- [X] Permitir que el usuario inicie un **Break** mientras está en un Pomodoro.
+- [X] Mostrar un **contador** de Pomodoros/Breaks completados.
+- [X] Asegurar que el diseño sea **responsive**.
+- [X] Implementar una forma de **desplegar** la aplicación en línea.
 
 ## 🚀 Objetivos secundarios
 
@@ -36,8 +36,8 @@ Si quieres llevar tu implementación al siguiente nivel, intenta cumplir con est
 
 - [ ] Implementar notificaciones sonoras al finalizar cada ciclo de Pomodoro o Break
 - [ ] Añadir un historial de sesiones completadas utilizando almacenamiento local (localStorage)
-- [ ] Optimizar el rendimiento para conseguir un puntaje superior a 90 en PageSpeed Insights
-- [ ] Utilizar patrones avanzados de JavaScript como módulos, closures o el patrón Observer
+- [X] Optimizar el rendimiento para conseguir un puntaje superior a 90 en PageSpeed Insights
+- [X] Utilizar patrones avanzados de JavaScript como módulos, closures o el patrón Observer
 - [ ] Implementar un tema oscuro/claro con CSS variables y JavaScript
 - [ ] Crear tests unitarios para las funciones principales de la aplicación
 - [ ] Optimizar la aplicación para funcionar sin conexión (PWA)
