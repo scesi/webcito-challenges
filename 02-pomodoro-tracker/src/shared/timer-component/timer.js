@@ -35,6 +35,10 @@ class TimerComponent extends HTMLElement {
         this.pauseTimer();
       }
     }
+    if (name === "timecolor") {
+      this.timecolor = newValue;
+      this.updateDisplay();
+    }
   }
 
   getTemplate() {

@@ -8,94 +8,87 @@ const breaks = document.querySelector("#breaks");
 const pomodoros = document.querySelector("#pomodoros");
 const sessions = document.querySelector("#sessions");
 
-const storedSessions = localStorage.getItem("sessionsPomodoro");
-if (storedSessions !== null) {
-  sessions.innerText = `Sessions: ${storedSessions}`;
-}
-
 const pomodoroState = {
   work: "00:01",
   break: "00:01",
 };
 
+const colors = {
+  primary: "#465BE0",
+  secondary: "#3AB499",
+  inactive: "#E04B46",
+};
+
+function updateSessionCount() {
+  let storedSessions = localStorage.getItem("sessionsPomodoro");
+  if (storedSessions !== null) {
+    sessions.innerText = `Sessions: ${storedSessions}`;
+  }
+}
+
+function toggleState() {
+  const isBreak = primaryCurrentState === "break";
+  primaryCurrentState = isBreak ? "work" : "break";
+
+  primaryButton.setAttribute(
+    "text",
+    isBreak ? "Start Pomodoro" : "Start Break"
+  );
+  secondaryButton.setAttribute(
+    "text",
+    isBreak ? "Pause Break" : "Pause Pomodoro"
+  );
+  timer.setTime(pomodoroState[primaryCurrentState]);
+  timer.setAttribute("switch", "true");
+
+  const newColor = isBreak ? colors.secondary : colors.primary;
+  const circles = timer.shadowRoot.querySelectorAll("circle");
+  const timerHeader = timer.shadowRoot.querySelector("h2");
+  timerHeader.style.color = newColor;
+  circles.forEach((circle) => {
+    circle.setAttribute("stroke", newColor);
+  });
+  isPaused = false;
+  secondaryButton.innerText = `Pause ${
+    primaryCurrentState === "work" ? "Pomodoro" : "Break"
+  }`;
+}
+
+const handleTimerFinished = () => {
+  toggleState();
+
+  if (primaryCurrentState === "break") {
+    let pomodoroCount = parseInt(pomodoros.innerText.split(": ")[1]) + 1;
+    pomodoros.innerText = `Pomodoros: ${pomodoroCount}`;
+
+    if (pomodoroCount % 4 === 0) {
+      let storedSessions = localStorage.getItem("sessionsPomodoro");
+      let sessionsCount = storedSessions ? parseInt(storedSessions) + 1 : 1;
+      localStorage.setItem("sessionsPomodoro", sessionsCount);
+      sessions.innerText = `Sessions: ${sessionsCount}`;
+    }
+  } else {
+    let breakCount = parseInt(breaks.innerText.split(": ")[1]) + 1;
+    breaks.innerText = `Breaks: ${breakCount}`;
+  }
+};
+
+function togglePause() {
+  isPaused = !isPaused;
+  timer.setAttribute("switch", isPaused ? "false" : "true");
+  secondaryButton.setAttribute(
+    "text",
+    `${isPaused ? "Resume" : "Pause"} ${
+      primaryCurrentState === "work" ? "Pomodoro" : "Break"
+    }`
+  );
+}
+
 primaryButton.setAttribute("text", "Start Pomodoro");
-primaryButton.addEventListener("click", () => {
-  if (timer) {
-    timer.setAttribute("switch", "false");
-    const currentText = primaryButton.getAttribute("text");
-    if (currentText === "Start Break") {
-      primaryButton.setAttribute("text", "Start Pomodoro");
-      secondaryButton.setAttribute("text", "Pause Break");
-      timer.setTime(pomodoroState.break);
-      timer.setAttribute("switch", "true");
-      primaryCurrentState = "work";
-    } else {
-      primaryButton.setAttribute("text", "Start Break");
-      secondaryButton.setAttribute("text", "Pause Pomodoro");
-      timer.setTime(pomodoroState.work);
-      timer.setAttribute("switch", "true");
-      primaryCurrentState = "break";
-    }
+primaryButton.addEventListener("click", toggleState);
+timer.addEventListener("timer-finished", handleTimerFinished);
+secondaryButton.addEventListener("click", togglePause);
 
-    isPaused = false;
-    secondaryButton.innerText =
-      "Pause " + (primaryCurrentState === "work" ? "Pomodoro" : "Break");
-  }
-});
-
-timer.addEventListener("timer-finished", () => {
-  if (timer) {
-    const currentText = primaryButton.getAttribute("text");
-
-    if (currentText === "Start Break") {
-      primaryButton.setAttribute("text", "Start Pomodoro");
-      secondaryButton.setAttribute("text", "Pause Break");
-      timer.setTime(pomodoroState.break);
-      timer.startTimer();
-      timer.setAttribute("switch", "true");
-      primaryCurrentState = "break";
-      let pomodoroCount = parseInt(pomodoros.innerText.split(": ")[1]) + 1;
-      pomodoros.innerText = `Pomodoros: ${pomodoroCount}`;
-      if (pomodoroCount % 4 === 0) {
-        let sessionsCount = storedSessions ? parseInt(storedSessions) + 1 : 1;
-        localStorage.setItem("sessionsPomodoro", sessionsCount);
-        sessions.innerText = `Sessions: ${sessionsCount}`;
-      }
-    } else {
-      primaryButton.setAttribute("text", "Start Break");
-      secondaryButton.setAttribute("text", "Pause Pomodoro");
-      timer.setTime(pomodoroState.work);
-      timer.startTimer();
-      timer.setAttribute("switch", "true");
-      primaryCurrentState = "work";
-      let breakCount = parseInt(breaks.innerText.split(": ")[1]) + 1;
-      breaks.innerText = `Breaks: ${breakCount}`;
-    }
-
-    isPaused = false;
-    secondaryButton.innerText =
-      "Pause " + (primaryCurrentState === "work" ? "Pomodoro" : "Break");
-  }
-});
-
-secondaryButton.addEventListener("click", () => {
-  if (timer) {
-    if (isPaused) {
-      timer.setAttribute("switch", "true");
-      secondaryButton.setAttribute(
-        "text",
-        "Pause " + (primaryCurrentState === "work" ? "Break" : "Pomodoro")
-      );
-    } else {
-      timer.setAttribute("switch", "false");
-      secondaryButton.setAttribute(
-        "text",
-        "Resume " + (primaryCurrentState === "work" ? "Break" : "Pomodoro")
-      );
-    }
-
-    isPaused = !isPaused;
-  }
-});
-
+updateSessionCount();
 timer.setAttribute("time", pomodoroState.work);
+timer.setAttribute("timecolor", colors.inactive);
