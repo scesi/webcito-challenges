@@ -6,10 +6,16 @@ const secondaryButton = document.querySelector("#secondarybtn");
 const timer = document.querySelector("#timer");
 const breaks = document.querySelector("#breaks");
 const pomodoros = document.querySelector("#pomodoros");
+const sessions = document.querySelector("#sessions");
+
+const storedSessions = localStorage.getItem("sessionsPomodoro");
+if (storedSessions !== null) {
+  sessions.innerText = `Sessions: ${storedSessions}`;
+}
 
 const pomodoroState = {
-  work: "00:03",
-  break: "00:02",
+  work: "00:01",
+  break: "00:01",
 };
 
 primaryButton.setAttribute("text", "Start Pomodoro");
@@ -50,6 +56,11 @@ timer.addEventListener("timer-finished", () => {
       primaryCurrentState = "break";
       let pomodoroCount = parseInt(pomodoros.innerText.split(": ")[1]) + 1;
       pomodoros.innerText = `Pomodoros: ${pomodoroCount}`;
+      if (pomodoroCount % 4 === 0) {
+        let sessionsCount = storedSessions ? parseInt(storedSessions) + 1 : 1;
+        localStorage.setItem("sessionsPomodoro", sessionsCount);
+        sessions.innerText = `Sessions: ${sessionsCount}`;
+      }
     } else {
       primaryButton.setAttribute("text", "Start Break");
       secondaryButton.setAttribute("text", "Pause Pomodoro");
