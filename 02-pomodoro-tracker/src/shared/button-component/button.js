@@ -23,6 +23,16 @@ class ButtonComponent extends HTMLElement {
   getStyle() {
     return /* CSS */ `
     <style>
+    .light-theme {
+      --bg:hsl(192, 100.00%, 89.00%);
+      --text: #172030;
+    }
+
+    .dark-theme {
+      --bg: #172030;
+      --text: #ffffff;
+    }
+
     .dangerbtn {
         display: flex;
         min-width: ${this.width}px;
@@ -36,7 +46,7 @@ class ButtonComponent extends HTMLElement {
         gap: 16px;
         border: none;
         border-radius: 8px;
-        background: var(--Button, #172030);
+        background-color: var(--bg);
         box-shadow: 9px 9px 16px 0px rgba(0, 0, 0, 0.24), -4px -4px 16px 0px rgba(73, 73, 73, 0.40);
     }
     .normalbtn {
@@ -45,14 +55,14 @@ class ButtonComponent extends HTMLElement {
         max-width: 250px;
         font-size: 1rem;
         font-weight: 500;
-        color: var(--Text, #ffffff);
+        color: var(--text);
         padding: 12px 24px;
         justify-content: center;
         align-items: center;
         gap: 16px;
         border: none;
         border-radius: 8px;
-        background: var(--Button, #172030);
+        background: var(--bg);
         box-shadow: 9px 9px 16px 0px rgba(0, 0, 0, 0.24), -4px -4px 16px 0px rgba(73, 73, 73, 0.40);
     }
     button:disabled {
@@ -114,4 +124,3 @@ class ButtonComponent extends HTMLElement {
 }
 
 customElements.define("button-component", ButtonComponent);
-  
