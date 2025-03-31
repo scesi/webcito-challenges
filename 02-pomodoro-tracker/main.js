@@ -57,7 +57,7 @@ function toggleState() {
 const handleTimerFinished = () => {
   toggleState();
 
-  if (primaryCurrentState === "break") {
+  if (primaryCurrentState === "work") {
     let pomodoroCount = parseInt(pomodoros.innerText.split(": ")[1]) + 1;
     pomodoros.innerText = `Pomodoros: ${pomodoroCount}`;
 
