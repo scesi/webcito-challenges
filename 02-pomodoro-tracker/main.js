@@ -9,8 +9,8 @@ const pomodoros = document.querySelector("#pomodoros");
 const sessions = document.querySelector("#sessions");
 
 const pomodoroState = {
-  work: "00:01",
-  break: "00:01",
+  work: "00:05",
+  break: "00:05",
 };
 
 const colors = {
