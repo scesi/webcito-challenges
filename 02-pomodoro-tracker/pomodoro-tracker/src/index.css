@@ -1,16 +1,20 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.87);
+@import 'tailwindcss';
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --font-family: 'Roboto', sans-serif;
+  --primary-color: oklch(22.4% 0.0246 256.46);
+  --text-color: oklch(66.31% 0.2438 330.42);
+  --button-color: oklch(24.3% 0.0335 261.57);
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('../src/assets/fonts/Roboto.woff') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
+  font-family: var(--font-family);
   display: grid;
   justify-content: center;
   background-image: url('assets/image/bg.png');

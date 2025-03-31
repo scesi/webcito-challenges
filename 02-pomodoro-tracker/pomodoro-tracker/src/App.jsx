@@ -1,39 +1,17 @@
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import useTimer from './hooks/useTimer';
-import Mybutton from './components/Button/button';
 import './App.css';
+import Counter from './hooks/useStatus';
+
 
 function App() {
-  const { minutes, seconds, start, stop, totalSeconds } = useTimer(25);
-  const reminder = minutes * 60 + seconds;
-  const progressbar = ((totalSeconds - reminder) / totalSeconds) * 100;
   return (
-    <div className="card">
-      <span className="card__title">Pomodoro Tracker</span>
-      <div className="card__timer">
-        <CircularProgressbar
-          value={progressbar}
-          text={`${minutes}:${seconds}`}
-          styles={buildStyles({
-            strokeLinecap: 'round',
-            textSize: '24px',
-            pathTransitionDuration: 0.3,
-            pathColor: `rgba(255, 20, 215, ${minutes / 60})`,
-            textColor: '#E046D7',
-            trailColor: 'rgba(225, 30, 212, 0.2)',
-            backgroundColor: '#E046D7',
-          })}
-        />
+    <div className="mt-[200px] text-white flex justify-center items-center flex-col rounded-xl bg-[var(--primary-color)] p-5 shadow-2xl shadow-[-3px_0px_20px_#292B2E] ">
+      <span className="font-[900] text-2xl ">Pomodoro Tracker</span>
+
+      <div className="grid justify-center items-center w-full">
+        <Counter />
       </div>
-      <div className="card__button">
-        <Mybutton textColor='white' onClick={start}>
-          Start Pomodoro
-        </Mybutton>
-        <Mybutton textColor='red' onClick={stop}>
-          Pause Pomodoro
-        </Mybutton>
-      </div>
+      
     </div>
   );
 }
