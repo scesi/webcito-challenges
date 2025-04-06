@@ -1,8 +1,8 @@
 import { useEffect, useReducer, useState } from "react";
 import "./pomodoro.page.css";
 
-import sun from "../../assets/sun.svg";
-import moon from "../../assets/moon.svg";
+import sun from "../assets/sun.svg";
+import moon from "../assets/moon.svg";
 
 import { reducer, initialState } from "../components/pomodoroReducer";
 import { formatTime, calculateProgress } from "../utils/timeUtils";
