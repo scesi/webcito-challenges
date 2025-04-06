@@ -6,17 +6,17 @@
   --text-color: oklch(66.31% 0.2438 330.42);
   --button-color: oklch(24.3% 0.0335 261.57);
 }
-@font-face {
-  font-family: 'Roboto';
-  src: url('../src/assets/fonts/Roboto.woff') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
 
 body {
   font-family: var(--font-family);
   display: grid;
   justify-content: center;
-  background-image: url('assets/image/bg.png');
+  background-image: url('assets/image/desktop.png');
   background-size: cover;
+}
+@media (max-width: 768px) {
+  body {
+    background-image: url('assets/image/Mobile.png');
+    background-size: cover;
+  }
 }

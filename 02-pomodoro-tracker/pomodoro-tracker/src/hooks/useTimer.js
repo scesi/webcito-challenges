@@ -1,42 +1,36 @@
 import { useState, useEffect } from 'react';
 
-const useTimer = (initialMinutes) => {
-  const [minutes, setMinutes] = useState(initialMinutes);
-  const [seconds, setSeconds] = useState(0);
+const useTimer = (initialSeconds) => {
+  const [seconds, setSeconds] = useState(initialSeconds);
   const [isRunning, setIsRunning] = useState(false);
-  const totalSeconds = initialMinutes * 60;
-  useEffect(() => {
-    let interval;
 
-    if (isRunning) {
-      interval = setInterval(() => {
-        if (seconds === 0) {
-          if (minutes === 0) {
-            clearInterval(interval);
-          } else {
-            setMinutes((prev) => prev - 1);
-            setSeconds(59);
-          }
-        } else {
-          setSeconds((prev) => prev - 1);
+  useEffect(() => {
+    if (!isRunning) return;
+
+    const interval = setInterval(() => {
+      setSeconds((prev) => {
+        if (prev <= 0) {
+          clearInterval(interval);
+          return 0;
         }
-      }, 1000);
-    } else {
-      clearInterval(interval);
-    }
+        return prev - 1;
+      });
+    }, 1000);
 
     return () => clearInterval(interval);
-  }, [isRunning, seconds, minutes]);
+  }, [isRunning]);
+  useEffect(() => {
+    setSeconds(initialSeconds);
+  }, [initialSeconds]);
 
   const start = () => setIsRunning(true);
   const stop = () => setIsRunning(false);
-  const reset = () => {
+  const reset = (newSeconds) => {
     setIsRunning(false);
-    setMinutes(initialMinutes);
-    setSeconds(0);
+    setSeconds(newSeconds);
   };
 
-  return { minutes, seconds, start, stop, reset, totalSeconds };
+  return { seconds, start, stop, reset };
 };
 
 export default useTimer;
