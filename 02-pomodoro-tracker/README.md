@@ -1,3 +1,9 @@
+
+# 🍅 Contenido de refuerzo 
+https://www.webtutoriales.com/articulos/2023/12/22/svg-progreso-circular-animado/?utm_source=chatgpt.com
+https://javascript.plainenglish.io/how-to-build-a-pomodoro-timer-in-react-55c05a323494
+
+
 # 🍅 Webcito Challenge - Pomodoro Tracker
 
 Bienvenido al reto **Pomodoro Tracker**, parte de los desafíos de **Webcito Challenges**. En este reto, desarrollarás tu propia versión del método Pomodoro, un técnica de administración del tiempo que te ayudará a mejorar tu enfoque y productividad.
@@ -21,61 +27,20 @@ Cuando tu energía se concentra en una sola cosa, te vuelves más poderoso. Pomo
 ## 🎯 Objetivos principales
 Para completar el reto, marca los siguientes hitos:
 
-- [ ] Implementar la cuenta regresiva de **25 minutos** para Pomodoro y **5 minutos** para Break.
-- [ ] Cambiar el texto del botón de **Iniciar/Pausar Pomodoro** según el estado del temporizador.
-- [ ] Permitir que el usuario inicie un **Break** mientras está en un Pomodoro.
-- [ ] Mostrar un **contador** de Pomodoros/Breaks completados.
-- [ ] Asegurar que el diseño sea **responsive**.
-- [ ] Implementar una forma de **desplegar** la aplicación en línea.
+- [x] Implementar la cuenta regresiva de **25 minutos** para Pomodoro y **5 minutos** para Break.
+- [x] Cambiar el texto del botón de **Iniciar/Pausar Pomodoro** según el estado del temporizador.
+- [x] Permitir que el usuario inicie un **Break** mientras está en un Pomodoro.
+- [x] Mostrar un **contador** de Pomodoros/Breaks completados.
+- [x] Asegurar que el diseño sea **responsive**.
+- [x] Implementar una forma de **desplegar** la aplicación en línea.
 
 ## 🚀 Objetivos secundarios
 Si quieres llevar tu implementación al siguiente nivel, intenta cumplir con estos retos adicionales:
 
-- [ ] Implementar notificaciones sonoras al finalizar cada ciclo de Pomodoro o Break
-- [ ] Añadir un historial de sesiones completadas utilizando almacenamiento local (localStorage)
-- [ ] Optimizar el rendimiento para conseguir un puntaje superior a 90 en PageSpeed Insights
-- [ ] Utilizar patrones avanzados de JavaScript como módulos, closures o el patrón Observer
-- [ ] Implementar un tema oscuro/claro con CSS variables y JavaScript
-- [ ] Crear tests unitarios para las funciones principales de la aplicación
-- [ ] Optimizar la aplicación para funcionar sin conexión (PWA)
-
-## 🚀 Pasos para participar
-1. **Hacer fork** del repositorio de Webcito Challenges.
-2. **Crear una carpeta** dentro del repositorio con el nombre del reto.
-3. **Desarrollar el reto** siguiendo los requisitos.
-4. **Realizar un deploy** para que el proyecto pueda visualizarse en línea.
-5. **Subir los cambios** a tu fork del repositorio.
-6. **Hacer un Pull Request (PR)** al repositorio principal en la carpeta del reto.
-7. **Revisar y responder feedback** si algún colaborador hace observaciones.
-
-## 📝 Formato del Pull Request
-Para mantener la organización del repositorio, sigue el siguiente formato al hacer un PR:
-
-**Título:** `[Reto #] - Pomodoro Tracker`
-
-**Descripción:**
-- **Nombre:** *[Tu nombre o usuario de GitHub]*
-- **Herramientas utilizadas:** *[Ejemplo: JavaScript, React, Vue, TailwindCSS.]*
-- **Deploy:** *[Enlace del deploy]*
-- **Checklist de hitos completados:**
-  - [x] Hito 1 - Implementar cuenta regresiva de Pomodoro y Break.
-  - [x] Hito 2 - Cambiar el texto del botón según el estado.
-  - [x] Hito 3 - Implementar la vista de Break.
-  - [ ] Hito opcional - *(Si aplica)*
-
-## 🔍 Revisión de código y feedback
-Para mejorar juntos:
-- Revisa y prueba los códigos de otros participantes.
-- Deja comentarios constructivos en los PRs.
-- Comparte recursos y sugerencias de mejora.
-
-<!-- ## 📚 Recursos recomendados
-- [MDN Web Docs](https://developer.mozilla.org/)
-- [FreeCodeCamp](https://www.freecodecamp.org/)
-- [CSS-Tricks - Flexbox y Grid](https://css-tricks.com/) -->
-
----
-Recuerda: **La mejor forma de aprender a programar es programando**. 💻🔥
-
-¡Diviértete creando tu Pomodoro Tracker! 🍅⏳
-
+- [x] Implementar notificaciones sonoras al finalizar cada ciclo de Pomodoro o Break
+- [x] Añadir un historial de sesiones completadas utilizando almacenamiento local (localStorage)
+- [x] Optimizar el rendimiento para conseguir un puntaje superior a 90 en PageSpeed Insights
+- [x] Utilizar patrones avanzados de JavaScript como módulos, closures o el patrón Observer
+- [x] Implementar un tema oscuro/claro con CSS variables y JavaScript
+- [x] Crear tests unitarios para las funciones principales de la aplicación
+- [x] Optimizar la aplicación para funcionar sin conexión (PWA)
