@@ -96,7 +96,7 @@ export const PomodoroPage = () => {
           </button>
 
           <button
-            className="timer__button"
+            className={`timer__button ${state.isRunning ? 'timer__button--pause' : 'timer__button--pause'}`}
             onClick={() => dispatch({ type: "TOGGLE_RUNNING" })}
           >
             {state.isBreak
@@ -105,8 +105,10 @@ export const PomodoroPage = () => {
                 : "Resume Break"
               : state.isRunning
               ? "Pause Pomodoro"
-              : "Resume Pomodoro"}
+              : "Resume Pomodoro"
+              }
           </button>
+
         </div>
       </section>
     </main>
