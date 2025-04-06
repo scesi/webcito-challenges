@@ -1,78 +1,75 @@
-import { useEffect, useState } from 'react';
-import './pomodoro.page.css';
+import { useEffect, useReducer, useState } from "react";
+import "./pomodoro.page.css";
+
+import sun from "../../assets/sun.svg";
+import moon from "../../assets/moon.svg";
+
+import { reducer, initialState } from "../components/pomodoroReducer";
+import { formatTime, calculateProgress } from "../utils/timeUtils";
 
 export const PomodoroPage = () => {
-    const [timeLeft, setTimeLeft] = useState(25 * 60);
-    const [isRunning, setIsRunning] = useState(false);
-    const [isBreak, setIsBreak] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
 
-    useEffect(() => {
-        let interval: number;
-
-        if (isRunning && timeLeft > 0) {
-        interval = setInterval(() => {
-            setTimeLeft((prevTime) => prevTime - 1);
-        }, 1000);
-        }
-
-        return () => {
-        if (interval) {
-            clearInterval(interval);
-        }
-        };
-    }, [isRunning, timeLeft]);
-
-    const toggleTimer = () => {
-        setIsRunning(!isRunning);
-    };
-
-    const togglePomodoro = () => {
-        setTimeLeft(25 * 60); 
-        setIsBreak(false);
-        setIsRunning(true);
+  useEffect(() => {
+    let interval: number;
+    if (state.isRunning && state.timeLeft > 0) {
+      interval = window.setInterval(() => {
+        dispatch({ type: "TICK" });
+      }, 1000);
     }
-
-    const togglePause = () => {
-        setIsRunning(false);
-    }
-
-    const startBreak = () => {
-        setTimeLeft(5 * 60);
-        setIsBreak(true);
-        setIsRunning(true);
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
     };
+  }, [state.isRunning, state.timeLeft]);
 
-    const formatTime = (seconds: number): string => {
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = seconds % 60;
-        return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
-    };
+  const circumference = 2 * Math.PI * 100;
+  const progress = calculateProgress(state.timeLeft, state.isBreak);
+  const offset = circumference - (progress / 100) * circumference;
 
-    const calculateProgress = (): number => {
-        const totalTime = isBreak ? 5 * 60 : 25 * 60;
-        return ((totalTime - timeLeft) / totalTime) * 100;
-    };
-
-    const circumference = 2 * Math.PI * 100;
-    const offset = circumference - (calculateProgress() / 100) * circumference;
   return (
-    <main className="timer">
-    <div className="timer__background-circle timer__background-circle--top-right"></div>
-    <div className="timer__background-circle timer__background-circle--bottom-left"></div>
-    
-    <section className="timer__container">
+    <main className={`timer ${theme}`}>
+      <button
+        className="timer__button timer__button--theme"
+        onClick={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}
+      >
+        <img
+          src={theme === "dark" ? sun : moon}
+          className={
+            theme === "dark"
+              ? "timer__button--theme--imgDark"
+              : "timer__button--theme--imgLight"
+          }
+          alt="noche / dia"
+        />
+      </button>
+
+      <div className="timer__background-circle timer__background-circle--top-right"></div>
+      <div className="timer__background-circle timer__background-circle--bottom-left"></div>
+
+      <section className="timer__container">
         <h1 className="timer__title">Pomodoro Tracker</h1>
-        
+
         <article className="timer__circle">
           <svg width="220" height="220" className="timer__progress">
             <circle
-              className={`${isBreak ? 'timer__progress-background--break' : 'timer__progress-background'}`}
+              className={
+                state.isBreak
+                  ? "timer__progress-background--break"
+                  : "timer__progress-background"
+              }
               cx="110"
               cy="110"
               r="100"
             />
             <circle
-              className={`${isBreak ? 'timer__progress-circle--break' : 'timer__progress-circle'}`}
+              className={
+                state.isBreak
+                  ? "timer__progress-circle--break"
+                  : "timer__progress-circle"
+              }
               cx="110"
               cy="110"
               r="100"
@@ -80,85 +77,38 @@ export const PomodoroPage = () => {
               strokeDashoffset={offset}
             />
           </svg>
-          <div className={`${isBreak ? 'timer__time--break' : 'timer__time'}`}>{formatTime(timeLeft)}</div>
+          <span className="timer__cycle-count">{state.cycleCount}x</span>
+          <div className={state.isBreak ? "timer__time--break" : "timer__time"}>
+            {formatTime(state.timeLeft)}
+          </div>
         </article>
-        
-        {!isRunning && !isBreak ? (
-            <>
-                {!isBreak ? 
-                (
-                <button 
-                className={`timer__button ${isRunning ? 'timer__button--pause' : ''}`}
-                onClick={togglePomodoro}
-                >
-                Start Pomodoro
-                </button>
-                ) :(
-                <button 
-                className={`timer__button ${isRunning ? 'timer__button--pause' : ''}`}
-                onClick={toggleTimer}
-                >
-                Start Break
-                </button>
-                )}
-                
-                <button 
-                className={`timer__button timer__button--pause`}
-                onClick={toggleTimer}
-                >
-                Pause Pomodoro
-                </button>
-            </>
-        ) : (
-<>
-            {!isRunning ? (
-                <button 
-                className={`timer__button ${isRunning ? 'timer__button--pause' : ''}`}
-                onClick={togglePomodoro}
-                >
-                Start Pomodoro
-                </button>
-            ):(
-                <button 
-                className="timer__button timer__button--break" 
-                onClick={startBreak}
-              >
-                Start Break
-              </button>
-            )}
-    
-            {!isRunning ? (
-                <button 
-                className={`timer__button timer__button--pause`}
-                onClick={toggleTimer}
-                >
-                Resume Pomodoro
-                </button>
-            ):(
-                <button 
-                className={`timer__button timer__button--pause`}
-                onClick={togglePause}
-                >
-                Pause Pomodoro
-                </button>
-            )}
-            </>
-        )
-        }
 
-
-        
-        {/* {!isBreak && (
-         
-         <button 
-            className="timer__button timer__button--break" 
-            onClick={startBreak}
+        <div className="timer__buttons">
+          <button
+            className="timer__button timer__button--break"
+            onClick={() => {
+              state.isBreak
+                ? dispatch({ type: "START_POMODORO" })
+                : dispatch({ type: "START_BREAK" });
+            }}
           >
-            Start Break
+            {state.isBreak ? "Start Pomodoro" : "Start Break"}
           </button>
-        )} */}
-        
-    </section>
-  </main>
-  )
-}
+
+          <button
+            className="timer__button"
+            onClick={() => dispatch({ type: "TOGGLE_RUNNING" })}
+          >
+            {state.isBreak
+              ? state.isRunning
+                ? "Pause Break"
+                : "Resume Break"
+              : state.isRunning
+              ? "Pause Pomodoro"
+              : "Resume Pomodoro"}
+          </button>
+        </div>
+      </section>
+    </main>
+  );
+};
