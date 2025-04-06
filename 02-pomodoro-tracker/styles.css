@@ -128,3 +128,12 @@ p {
   flex-direction: column;
   gap: 10px;
 }
+
+.themeChanger {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}

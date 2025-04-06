@@ -7,6 +7,7 @@ const timer = document.querySelector("#timer");
 const breaks = document.querySelector("#breaks");
 const pomodoros = document.querySelector("#pomodoros");
 const sessions = document.querySelector("#sessions");
+const themeSwitch = document.querySelector("#themeButton");
 
 const pomodoroState = {
   work: "00:05",
@@ -84,6 +85,17 @@ function togglePause() {
   );
 }
 
+const toggleTheme = () => {
+  if (themeSwitch.isChecked) {
+    document.body.classList.remove("light-theme");
+    document.body.classList.add("dark-theme");
+  } else {
+    document.body.classList.remove("dark-theme");
+    document.body.classList.add("light-theme");
+  }
+};
+
+themeSwitch.addEventListener("click", toggleTheme);
 primaryButton.setAttribute("text", "Start Pomodoro");
 primaryButton.addEventListener("click", toggleState);
 timer.addEventListener("timer-finished", handleTimerFinished);
