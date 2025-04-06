@@ -1,4 +1,4 @@
 export function playSound() {
-  const audio = new Audio("/02-pomodoro-tracker/assets/sounds/notification.mp3");
+  const audio = new Audio("/assets/sounds/notification.mp3");
   audio.play();
 }
