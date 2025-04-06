@@ -56,7 +56,7 @@ export const PomodoroPage = () => {
           <svg width="220" height="220" className="timer__progress">
             <circle
               className={
-                state.isBreak
+                state.isBreak && state.isRunning
                   ? "timer__progress-background--break"
                   : "timer__progress-background"
               }
@@ -66,7 +66,7 @@ export const PomodoroPage = () => {
             />
             <circle
               className={
-                state.isBreak
+                state.isBreak && state.isRunning
                   ? "timer__progress-circle--break"
                   : "timer__progress-circle"
               }
@@ -78,7 +78,7 @@ export const PomodoroPage = () => {
             />
           </svg>
           <span className="timer__cycle-count">{state.cycleCount}x</span>
-          <div className={state.isBreak ? "timer__time--break" : "timer__time"}>
+          <div className={state.isBreak && state.isRunning ? "timer__time--break" : "timer__time"}>
             {formatTime(state.timeLeft)}
           </div>
         </article>
@@ -97,6 +97,7 @@ export const PomodoroPage = () => {
 
           <button
             className={`timer__button ${state.isRunning ? 'timer__button--pause' : 'timer__button--pause'}`}
+            
             onClick={() => dispatch({ type: "TOGGLE_RUNNING" })}
           >
             {state.isBreak
@@ -105,10 +106,8 @@ export const PomodoroPage = () => {
                 : "Resume Break"
               : state.isRunning
               ? "Pause Pomodoro"
-              : "Resume Pomodoro"
-              }
+              : "Resume Pomodoro"}
           </button>
-
         </div>
       </section>
     </main>
