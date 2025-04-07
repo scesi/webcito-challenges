@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Timer from '../components/Timer';
+import '../styles/global.css';
+---
+
+<Layout title="Pomodoro Tracker">
+  <Timer client:load />
+</Layout>
