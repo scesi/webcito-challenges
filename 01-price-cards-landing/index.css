@@ -1,0 +1,242 @@
+body {
+   padding: 10%;
+   font-family: "Poppins", Arial, sans-serif;
+   background: var(--Bg, #f5f5fa);
+}
+
+.sectionPlans {
+   display: flex;
+   justify-content: center;
+}
+.cards {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   border-radius: 29px;
+}
+
+.title {
+   color: var(--Black, #373737);
+   font-size: 28px;
+   font-weight: 600;
+}
+.description {
+   color: var(--Grey, #848199);
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 24px;
+}
+.popular {
+   order: -1;
+}
+
+.card {
+   box-sizing: border-box;
+   padding: 29px;
+   border-radius: 26px;
+   transition: all 0.5s, transform 0.5s;
+   background: var(--White, #fff);
+   color: var(--Black, #373737);
+   /*Tamaño*/
+   width: 315px;
+   min-height: 480px;
+   margin-block: 48px;
+}
+.card.animated-hover {
+   box-shadow: 0px 42px 34px 0px rgba(82, 67, 194, 0.3);
+   background: #ff8e3c;
+   transform: translateY(-50px);
+}
+.card.animated-hover .card__button__plan {
+   color: orange;
+   background: white;
+}
+
+.card.animated-hover .card__button__plan:hover {
+   color: #fff;
+   background: #373737;
+   transform: translateY(-50px);
+}
+
+.card:hover {
+   box-shadow: 0px 42px 34px 0px rgba(82, 67, 194, 0.3);
+   background: #ff8e3c;
+   transform: translateY(-10px);
+}
+
+.card:hover .list__item::before {
+   content: "";
+   position: absolute;
+   transform: translateX(-150%);
+   width: 20px;
+   height: 20px;
+   background-image: url("./svg/check.svg");
+   filter: invert(0%);
+}
+
+.card:hover .card__button__plan {
+   color: orange;
+   background: white;
+}
+
+.card:hover .card__button__plan:hover {
+   color: var(--White, #fff);
+   background: var(--Black, #373737);
+   transform: translateY(10%);
+}
+
+.card__header__title {
+   display: flex;
+   align-items: center;
+   height: 70px;
+}
+.card__header__title--grant {
+   font-size: 28px;
+   font-weight: 600;
+}
+.card__header__title--tiny {
+   font-size: 16px;
+   margin-left: 8px;
+   font-weight: 400;
+}
+
+.card__header__info {
+   display: flex;
+   height: auto;
+   height: 27px;
+   justify-content: end;
+}
+.card__header__info--popular {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 121px;
+   height: 27px;
+   border: 0px;
+   border-radius: 13.5px;
+   background: #ffd5b6;
+   color: var(--Black, #373737);
+   font-size: 12px;
+   font-weight: 600;
+}
+
+.card__subtitle {
+   font-size: 28px;
+   font-weight: 600;
+   margin-block: 0px;
+}
+
+.card__subtitle__list {
+   padding-bottom: 16px;
+}
+
+.card__subtitle__list__item {
+   list-style: none;
+   margin-left: 29px;
+   margin-block: 16px;
+   font-size: 14px;
+   line-height: 24px;
+}
+.card__subtitle__list__item::before {
+   content: "";
+   position: absolute;
+   transform: translateX(-150%);
+   transition: filter 0.5s;
+   width: 20px;
+   height: 20px;
+   background-image: url("./svg/check.svg");
+   filter: invert(100%);
+}
+
+.card__subtitle__list__item--inverse {
+   list-style: none;
+   margin-left: 29px;
+   margin-block: 16px;
+   font-size: 14px;
+   line-height: 24px;
+   filter: invert(100%);
+}
+
+.card__subtitle__list__item--inverse::before {
+   content: "";
+   position: absolute;
+   transform: translateX(-150%);
+   transition: filter 0.5s;
+   width: 20px;
+   height: 20px;
+   background-image: url("./svg/check.svg");
+   filter: invert(75%);
+}
+
+.card__button {
+   display: flex;
+}
+
+.card__button__plan {
+   color: var(--Primary, #ff8e3c);
+   border: none;
+   text-align: center;
+   font-size: 16px;
+   font-style: normal;
+   font-weight: 700;
+   line-height: 24px;
+   padding: 12px 32px;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
+   flex: 1 0 0;
+   border-radius: 90px;
+   background: #ff8e3c1a;
+   transition: all 0.5s;
+}
+
+/*Responsive*/
+@media (min-width: 1536px) {
+   body {
+      padding: 130px;
+   }
+   .cards {
+      background-color: #ffffff;
+      max-width: m-content;
+      margin-block: 100px;
+   }
+   .title {
+      font-size: 84px;
+      margin-block: 0px;
+   }
+   .popular {
+      order: 0;
+   }
+   .card {
+      margin-block: 0px;
+   }
+   .card:hover {
+      transform: translateY(-50px);
+   }
+}
+
+@media (min-width: 768px) and (max-width: 1536px) {
+   body {
+      padding: 90px;
+   }
+   .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background-color: #fff;
+      width: max-content;
+      margin-block: 100px;
+   }
+   .title {
+      font-size: 84px;
+      margin-block: 0px;
+   }
+   .popular {
+      order: 0;
+   }
+   .card {
+      margin-block: 20px;
+   }
+   .card:hover {
+      transform: translateY(-50px);
+   }
+}
