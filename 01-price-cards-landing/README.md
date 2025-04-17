@@ -12,13 +12,13 @@
 ## 🎯 Objetivos principales
 Para completar este reto, debes cumplir con los siguientes hitos:
 
-- [ ] Maquetar la estructura principal respetando la jerarquía del diseño
-- [ ] Aplicar **BEM** en la nomenclatura de las clases CSS correctamente
-- [ ] Conseguir un diseño **pixel perfect** basado en el Figma proporcionado
-- [ ] Hacer que la landing sea completamente **responsive**
-- [ ] Asegurar una correcta organización del código con comentarios y estructura limpia
-- [ ] Usar **flexbox y/o grid** para la disposición de los elementos según el diseño
-- [ ] Mantener una correcta **semántica HTML**
+- [X] Maquetar la estructura principal respetando la jerarquía del diseño
+- [X] Aplicar **BEM** en la nomenclatura de las clases CSS correctamente
+- [X] Conseguir un diseño **pixel perfect** basado en el Figma proporcionado
+- [X] Hacer que la landing sea completamente **responsive**
+- [X] Asegurar una correcta organización del código con comentarios y estructura limpia
+- [X] Usar **flexbox y/o grid** para la disposición de los elementos según el diseño
+- [X] Mantener una correcta **semántica HTML**
 
 ## 🚀 Objetivos secundarios
 Si quieres llevar tu implementación al siguiente nivel, intenta cumplir con estos retos adicionales:
