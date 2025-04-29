@@ -1,0 +1,50 @@
+---
+import ProfileBlank from '@/src/assets/profile-blank.svg';
+
+interface ProfileProps {
+  name: string;
+  nickname: string;
+  avatar_url: string;
+  bio: string;
+  followers: number;
+  following: number;
+  stars: number;
+  location: string;
+  website: string;
+  twitter_username?: string;
+  instagram_username?: string;
+  linkedin_username?: string;
+}
+
+const data = Astro.props as ProfileProps;
+---
+
+<aside>
+  {
+    data.avatar_url ? (
+      <img src={data.avatar_url} alt="Avatar" class="avatar" />
+    ) : (
+      <ProfileBlank class="avatar" aria-label="Avatar" role="img" />
+    )
+  }
+  <h1>{data.name}</h1>
+  <h2>{data.nickname}</h2>
+  <p>{data.bio}</p>
+  <div class="follow-info">
+    <p>{data.followers} Followers</p>
+    <p>{data.following} Following</p>
+  </div>
+  <p>{data.stars}</p>
+  <p>{data.location}</p>
+  <p>{data.website}</p>
+  {data.twitter_username && <p>{data.twitter_username}</p>}
+  {data.instagram_username && <p>{data.instagram_username}</p>}
+  {data.linkedin_username && <p>{data.linkedin_username}</p>}
+</aside>
+
+<style>
+  .avatar {
+    border-radius: 100%;
+    border: 1px solid rgba(255, 244, 244, 0.26);
+  }
+</style>
