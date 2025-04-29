@@ -21,7 +21,7 @@ export default defineConfig([
       'public/',
     ],
     languageOptions: {
-      parser: ['astro-eslint-parser', parser],
+      parser,
       parserOptions: {
         project: './tsconfig.json',
         extraFileExtensions: ['.astro'],
