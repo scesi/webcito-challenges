@@ -1,0 +1,22 @@
+@import 'tailwindcss';
+
+:root {
+  --font-family: 'Roboto', sans-serif;
+  --primary-color: oklch(22.4% 0.0246 256.46);
+  --text-color: oklch(66.31% 0.2438 330.42);
+  --button-color: oklch(24.3% 0.0335 261.57);
+}
+
+body {
+  font-family: var(--font-family);
+  display: grid;
+  justify-content: center;
+  background-image: url('assets/image/desktop.png');
+  background-size: cover;
+}
+@media (max-width: 768px) {
+  body {
+    background-image: url('assets/image/Mobile.png');
+    background-size: cover;
+  }
+}
