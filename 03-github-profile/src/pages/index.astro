@@ -1,10 +1,24 @@
 ---
 import Layout from '@/src/layouts/Layout.astro';
+import Profile from '@components/sections/profile-aside/Profile.astro';
 
 import '@/src/globals.css';
-import Profile from '../components/sections/profile-aside/Profile.astro';
+
+const data = {
+  name: 'John Doe',
+  nickname: 'johndoe',
+  bio: 'Software Developer',
+  followers: 100,
+  following: 50,
+  stars: 200,
+  location: 'New York, USA',
+  website: 'https://example.com',
+  twitter_username: 'johndoe',
+  instagram_username: 'johndoe',
+  linkedin_username: 'johndoe',
+};
 ---
 
 <Layout>
-  <Profile />
+  <Profile data={data} />
 </Layout>

@@ -1,22 +1,36 @@
 ---
+import Button from '@components/ui/Button.astro';
+
 import ProfileBlank from '@/src/assets/profile-blank.svg';
+import HeartIcon from '@assets/svg/heart-icon.svg';
+import FollowersIcon from '@assets/svg/followers-icon.svg';
+import StarIcon from '@assets/svg/star-icon.svg';
+
+import InstagramLogo from '@assets/logos/socials/instagram-logo.svg';
+import TwitterLogo from '@assets/logos/socials/twitter-logo.svg';
+import LinkedInLogo from '@assets/logos/socials/linkedin-logo.svg';
+
+import LocationIcon from '@assets/svg/location-icon.svg';
+import LinkIcon from '@assets/svg/link-icon.svg';
 
 interface ProfileProps {
-  name: string;
-  nickname: string;
-  avatar_url: string;
-  bio: string;
-  followers: number;
-  following: number;
-  stars: number;
-  location: string;
-  website: string;
-  twitter_username?: string;
-  instagram_username?: string;
-  linkedin_username?: string;
+  data: {
+    name: string;
+    nickname: string;
+    avatar_url: string;
+    bio: string;
+    followers: number;
+    following: number;
+    stars: number;
+    location: string;
+    website: string;
+    twitter_username?: string;
+    instagram_username?: string;
+    linkedin_username?: string;
+  };
 }
 
-const data = Astro.props as ProfileProps;
+const { data } = Astro.props;
 ---
 
 <aside>
@@ -29,22 +43,129 @@ const data = Astro.props as ProfileProps;
   }
   <h1>{data.name}</h1>
   <h2>{data.nickname}</h2>
-  <p>{data.bio}</p>
-  <div class="follow-info">
-    <p>{data.followers} Followers</p>
-    <p>{data.following} Following</p>
+  <div class="action-buttons">
+    <Button> Follow </Button>
+    <Button class="sponsor-button">
+      <HeartIcon class="heart-icon" />
+      Sponsor
+    </Button>
   </div>
-  <p>{data.stars}</p>
-  <p>{data.location}</p>
-  <p>{data.website}</p>
-  {data.twitter_username && <p>{data.twitter_username}</p>}
-  {data.instagram_username && <p>{data.instagram_username}</p>}
-  {data.linkedin_username && <p>{data.linkedin_username}</p>}
+  <p>{data.bio}</p>
+  <div class="stats">
+    <article class="follow-info">
+      <FollowersIcon class="social-icon" />
+      <p>{data.followers} Followers</p>
+      <span class="dot"></span>
+      <p>{data.following} Following</p>
+      <span class="dot"></span>
+    </article>
+    <article class="stars-info">
+      <StarIcon class="social-icon" />
+      <p>{data.stars}</p>
+    </article>
+  </div>
+  <article class="social-container">
+    <LocationIcon class="social-icon" />
+    <p>{data.location}</p>
+  </article>
+  <article class="social-container">
+    <LinkIcon class="social-icon" />
+    <p>{data.website}</p>
+  </article>
+  {
+    data.twitter_username && (
+      <article class="social-container">
+        <TwitterLogo class="social-icon" />
+        <p>{data.twitter_username}</p>
+      </article>
+    )
+  }
+  {
+    data.instagram_username && (
+      <article class="social-container">
+        <InstagramLogo class="social-icon" />
+        <p>{data.instagram_username}</p>
+      </article>
+    )
+  }
+  {
+    data.linkedin_username && (
+      <article class="social-container">
+        <LinkedInLogo class="social-icon" />
+        <p>{data.linkedin_username}</p>
+      </article>
+    )
+  }
 </aside>
 
 <style>
   .avatar {
+    width: 15em;
+    height: 15em;
+    aspect-ratio: 1/1;
     border-radius: 100%;
     border: 1px solid rgba(255, 244, 244, 0.26);
+    transform: scale(1);
+  }
+
+  h2 {
+    font-size: var(--headline-2---ligth);
+    font-weight: 100;
+  }
+
+  .action-buttons {
+  }
+
+  .sponsor-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .heart-icon {
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .stats {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+  }
+
+  .dot {
+    width: 5px;
+    height: 5px;
+    background-color: var(--grey-2);
+    border-radius: 100%;
+    margin: 0 0.5rem;
+  }
+
+  .follow-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .stars-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .social-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .social-icon {
+    width: 2rem;
+    height: 2rem;
+    vertical-align: middle;
+    display: inline-block;
   }
 </style>
