@@ -36,9 +36,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^8.31.1
         version: 8.31.1(eslint@9.25.1)(typescript@5.8.3)
-      astro-eslint-parser:
-        specifier: ^1.2.2
-        version: 1.2.2
       eslint:
         specifier: ^9.25.1
         version: 9.25.1
@@ -60,9 +57,6 @@ importers:
       prettier-plugin-astro:
         specifier: 0.14.1
         version: 0.14.1
-      typescript:
-        specifier: ^5.8.3
-        version: 5.8.3
 
 packages:
 

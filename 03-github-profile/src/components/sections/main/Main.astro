@@ -1,0 +1,42 @@
+---
+import RepoCard from '@components/sections/main/components/RepoCard.astro';
+import type { RepoData } from '@src/types/repoData.ts';
+
+const { repoCount, repoData } = Astro.props;
+---
+
+<main>
+  <h2>Repositories {repoCount}</h2>
+  <article></article>
+  <section>
+    <div class="repo-list">
+      {repoData.map((repo: RepoData) => <RepoCard repo={repo} />)}
+    </div>
+  </section>
+</main>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+    padding: 2em 0;
+  }
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    height: 600px;
+    overflow-y: scroll;
+  }
+
+  section::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+  section::-webkit-scrollbar-thumb {
+    background-color: var(--grey);
+    border-radius: 1em;
+  }
+</style>

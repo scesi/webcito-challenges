@@ -1,6 +1,7 @@
 ---
 import Layout from '@/src/layouts/Layout.astro';
 import Profile from '@components/sections/profile-aside/Profile.astro';
+import Main from '@components/sections/main/Main.astro';
 
 import '@/src/globals.css';
 
@@ -17,8 +18,49 @@ const data = {
   instagram_username: 'johndoe',
   linkedin_username: 'johndoe',
 };
+
+const repoCount = 5;
+
+const repoData = [
+  {
+    name: 'Repo 1',
+    visibility: 'Public',
+    description: 'This is a description of Repo 1',
+    stars: 100,
+    forks: 50,
+  },
+  {
+    name: 'Repo 2',
+    visibility: 'Private',
+    description: 'This is a description of Repo 2',
+    stars: 200,
+    forks: 100,
+  },
+  {
+    name: 'Repo 3',
+    visibility: 'Public',
+    description: 'This is a description of Repo 3',
+    stars: 300,
+    forks: 150,
+  },
+  {
+    name: 'Repo 4',
+    visibility: 'Public',
+    description: 'This is a description of Repo 4',
+    stars: 400,
+    forks: 200,
+  },
+  {
+    name: 'Repo 5',
+    visibility: 'Public',
+    description: 'This is a description of Repo 5',
+    stars: 500,
+    forks: 250,
+  },
+];
 ---
 
 <Layout>
   <Profile data={data} />
+  <Main repoCount={repoCount} repoData={repoData} />
 </Layout>

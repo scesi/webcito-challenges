@@ -1,0 +1,18 @@
+---
+import type { RepoData } from '@src/types/repoData.ts';
+
+const { repo } = Astro.props as { repo: RepoData };
+---
+
+<article class="repo-item">
+  <div>
+    <h3>{repo.name}</h3>
+    <p>{repo.visibility}</p>
+  </div>
+  <p>{repo.description}</p>
+  <div>
+    <p>Language: {repo.language}</p>
+    <p>Stars: {repo.stars}</p>
+    <p>Forks: {repo.forks}</p>
+  </div>
+</article>
