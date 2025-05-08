@@ -13,5 +13,6 @@
   border: 1px solid var(--grey);
   font-size: var(--body-2---regular);
   outline: none;
+  color: var(--white);
   background-color: transparent;
 }

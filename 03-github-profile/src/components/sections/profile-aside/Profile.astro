@@ -24,11 +24,13 @@ const { data } = Astro.props;
       <ProfileBlank class="avatar" aria-label="Avatar" role="img" />
     )
   }
-  <h1>{data.name}</h1>
-  <h2>{data.nickname}</h2>
+  <div>
+    <h1>{data.name}</h1>
+    <h2>{data.nickname}</h2>
+  </div>
   <div class="action-buttons">
     <Button> Follow </Button>
-    <Button class="sponsor-button">
+    <Button class="sponsor-button" href={data.sponsor_url}>
       <HeartIcon class="heart-icon" />
       Sponsor
     </Button>
@@ -89,8 +91,8 @@ const { data } = Astro.props;
   aside {
     display: flex;
     flex-direction: column;
-    width: 25%;
-    max-width: 20em;
+    width: 30%;
+    max-width: 25em;
     height: fit-content;
   }
   .avatar {
@@ -108,6 +110,9 @@ const { data } = Astro.props;
   }
 
   .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
   }
 
   .sponsor-button {
@@ -127,7 +132,7 @@ const { data } = Astro.props;
   .stats {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0;
+    margin: 0;
   }
 
   .dot {
