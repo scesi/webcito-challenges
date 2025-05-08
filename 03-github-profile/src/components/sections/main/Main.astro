@@ -1,12 +1,12 @@
 ---
 import RepoCard from '@components/sections/main/components/RepoCard.astro';
-import type { RepoData } from '@src/types/repoData.ts';
+import type { RepoData } from '@/src/types/repository';
 
 const { repoCount, repoData } = Astro.props;
 ---
 
 <main>
-  <h2>Repositories {repoCount}</h2>
+  <h2>Repositories ({repoCount})</h2>
   <article></article>
   <section>
     <div class="repo-list">
@@ -27,7 +27,7 @@ const { repoCount, repoData } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 1em;
-    height: 600px;
+    height: 70vh;
     overflow-y: scroll;
   }
 
