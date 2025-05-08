@@ -33,5 +33,5 @@ export const useSearch = (query: string, username: string) => {
     return () => clearTimeout(delayDebounce);
   }, [query, username]);
 
-  return { results, loading, error };
+  return [results, loading, error];
 };
