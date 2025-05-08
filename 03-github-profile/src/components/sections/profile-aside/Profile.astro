@@ -44,17 +44,21 @@ const { data } = Astro.props;
     </article>
     <article class="stars-info">
       <StarIcon class="social-icon" />
-      <p>{data.stars}</p>
+      <p>{data.stars || 0}</p>
     </article>
   </div>
   <article class="social-container">
     <LocationIcon class="social-icon" />
     <p>{data.location}</p>
   </article>
-  <article class="social-container">
-    <LinkIcon class="social-icon" />
-    <p>{data.website}</p>
-  </article>
+  {
+    data.website && (
+      <article class="social-container">
+        <LinkIcon class="social-icon" />
+        <p>{data.website}</p>
+      </article>
+    )
+  }
   {
     data.twitter_username && (
       <article class="social-container">

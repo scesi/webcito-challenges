@@ -4,5 +4,6 @@ export interface RepoData {
     description: string;
     language: string;
     stars: number;
+    topics: string[];
     forks: number;
   }

@@ -1,18 +1,99 @@
 ---
+import StarIcon from '@assets/svg/star-icon.svg';
 import type { RepoData } from '@/src/types/repository';
 
 const { repo } = Astro.props as { repo: RepoData };
 ---
 
 <article class="repo-item">
-  <div>
+  <div class="repo-header">
     <h3>{repo.name}</h3>
-    <p>{repo.visibility}</p>
+    <p class="repo-visibility">{repo.visibility}</p>
   </div>
-  <p>{repo.description}</p>
-  <div>
-    <p>Language: {repo.language}</p>
-    <p>Stars: {repo.stars}</p>
-    <p>Forks: {repo.forks}</p>
+  <p class="repo-description">{repo.description}</p>
+  {
+    repo.topics && repo.topics.length > 0 ? (
+      <div class="repo-topics">
+        {repo.topics.map((topic) => (
+          <span class="repo-topic">{topic}</span>
+        ))}
+      </div>
+    ) : null
+  }
+  <div class="repo-details">
+    <span class="repo-stat">
+      <p>{repo.language}</p>
+    </span>
+    <span class="repo-stat">
+      <StarIcon />
+      <p>{repo.stars}</p>
+    </span>
+    <span class="repo-stat">
+      <p>{repo.forks}</p>
+    </span>
   </div>
 </article>
+
+<style>
+  h3 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--primary);
+    font-size: var(--headline-2---semi-bold);
+  }
+
+  .repo-item {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .repo-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .repo-description {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    color: var(--grey);
+    font-size: var(--body-2---regular);
+  }
+
+  .repo-visibility {
+    border: 1px solid var(--grey);
+    color: var(--grey);
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    font-size: var(--caption---regular);
+  }
+
+  .repo-details {
+    display: flex;
+    gap: 1rem;
+    font-size: var(--body-2---regular);
+    color: var(--grey-2);
+  }
+
+  .repo-topics {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .repo-topic {
+    background-color: #15223a;
+    color: var(--primary);
+    border-radius: 1rem;
+    padding: 0.5rem 0.8rem;
+    font-size: var(--caption---regular);
+  }
+
+  .repo-stat {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+</style>

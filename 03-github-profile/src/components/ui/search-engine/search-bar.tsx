@@ -8,9 +8,6 @@ const SearchEngine = () => {
   const [username, setUsername] = useState('diegodev-01');
   const [results, loading, error] = useSearch(query, username);
 
-  console.log('Results: ', results);
-  console.log('query: ', query);
-
   return (
     <search className={styles.search}>
       <input
