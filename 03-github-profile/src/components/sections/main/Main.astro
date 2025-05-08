@@ -1,13 +1,16 @@
 ---
 import RepoCard from '@components/sections/main/components/RepoCard.astro';
 import type { RepoData } from '@/src/types/repository';
+import SearchEngine from '@/src/components/ui/search-engine/search-bar';
 
 const { repoCount, repoData } = Astro.props;
 ---
 
 <main>
   <h2>Repositories ({repoCount})</h2>
-  <article></article>
+  <article>
+    <SearchEngine client:only="react" />
+  </article>
   <section>
     <div class="repo-list">
       {repoData.map((repo: RepoData) => <RepoCard repo={repo} />)}

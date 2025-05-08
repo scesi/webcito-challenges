@@ -24,7 +24,11 @@ export const useSearch = (query: string, username: string) => {
           const filtered = data.filter((item: any) =>
             item.name.toLowerCase().includes(query.toLowerCase())
           );
-          setResults(filtered);
+          if (filtered.length === 0) {
+            setError('No results found');
+          } else {
+            setError(null);
+          }
         })
         .catch((err) => setError(err.message))
         .finally(() => setLoading(false));
