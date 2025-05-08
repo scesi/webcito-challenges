@@ -32,6 +32,7 @@ const { repo } = Astro.props as { repo: RepoData };
       <p>{repo.forks}</p>
     </span>
   </div>
+  <hr>
 </article>
 
 <style>
@@ -40,6 +41,12 @@ const { repo } = Astro.props as { repo: RepoData };
     margin: 0;
     color: var(--primary);
     font-size: var(--headline-2---semi-bold);
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid var(--grey);
+    margin: 1rem 0;
   }
 
   .repo-item {

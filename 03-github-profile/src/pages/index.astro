@@ -12,57 +12,9 @@ const username = Astro.url.searchParams.get('username');
 const profileData = await getProfileData(username || 'diegodev-01');
 
 const repoData = await getUserRepos(username || 'diegodev-01');
-console.log(repoData);
-
-
-const repoCount = 5;
-
-// const repoData = [
-//   {
-//     name: 'Repo 1',
-//     visibility: 'Public',
-//     description: 'This is a description of Repo 1',
-//     topics: ['JavaScript', 'React'],
-//     language: 'JavaScript',
-//     stars: 100,
-//     forks: 50,
-//   },
-//   {
-//     name: 'Repo 2',
-//     visibility: 'Private',
-//     description: 'This is a description of Repo 2',
-//     language: 'TypeScript',
-//     stars: 200,
-//     forks: 100,
-//   },
-//   {
-//     name: 'Repo 3',
-//     visibility: 'Public',
-//     description: 'This is a description of Repo 3',
-//     topics: ['Java', 'Spring'],
-//     language: 'Java',
-//     stars: 300,
-//     forks: 150,
-//   },
-//   {
-//     name: 'Repo 4',
-//     visibility: 'Public',
-//     description: 'This is a description of Repo 4',
-//     topics: ['Python', 'Django', 'Flask'],
-//     stars: 400,
-//     forks: 200,
-//   },
-//   {
-//     name: 'Repo 5',
-//     visibility: 'Public',
-//     description: 'This is a description of Repo 5',
-//     stars: 500,
-//     forks: 250,
-//   },
-// ];
 ---
 
 <Layout>
   <Profile data={profileData} />
-  <Main repoCount={repoCount} repoData={repoData} />
+  <Main repoCount={profileData.repos} repoData={repoData} />
 </Layout>

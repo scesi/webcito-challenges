@@ -12,4 +12,5 @@ export interface ProfileData {
   twitter_username?: string;
   instagram_username?: string;
   linkedin_username?: string;
+  repos: number;
 }

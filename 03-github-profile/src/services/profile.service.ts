@@ -1,35 +1,33 @@
 import { createAdapterProfile, createAdapterRepo } from '../lib/adapters';
-import type { ProfileData } from '../types';
+import type { ProfileData, RepoData } from '../types';
 
-const api_base = import.meta.env.PUBLIC_API_URL;
-console.log('API Base URL: ', api_base);
+const API_BASE = import.meta.env.PUBLIC_API_URL;
 
-export const getProfileData = async (username: string) => {
-  try {
-    const response = await fetch(`${api_base}users/${username}`);
-    if (!response.ok) {
-      throw new Error(`Error fetching profile data: ${response.statusText}`);
-    }
-    const data: ProfileData = await response.json();
-    return createAdapterProfile(data);
-  } catch (error) {
-    console.error('Error fetching profile data: ', error);
-    throw error;
+const fetchWithHandling = async <T>(url: string): Promise<T> => {
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${import.meta.env.PRIVATE_API_TOKEN}`,
+    },
+  });
+
+  if (!response.ok) {
+    const message = await response.text();
+    throw new Error(`Request failed (${response.status}): ${message}`);
   }
+
+  return response.json();
 };
 
-export const getUserRepos = async (username: string) => {
-  try {
-    const response = await fetch(`${api_base}users/${username}/repos`);
-    if (!response.ok) {
-      throw new Error(`Error fetching user repos: ${response.statusText}`);
-    }
-    const data = await response.json();
-    console.log('User Repos Data: ', data);
-    
-    return createAdapterRepo(data);
-  } catch (error) {
-    console.error('Error fetching user repos: ', error);
-    throw error;
-  }
+export const getProfileData = async (
+  username: string
+): Promise<ProfileData> => {
+  const data = await fetchWithHandling<any>(`${API_BASE}users/${username}`);
+  return createAdapterProfile(data);
+};
+
+export const getUserRepos = async (username: string): Promise<RepoData[]> => {
+  const data = await fetchWithHandling<any[]>(
+    `${API_BASE}users/${username}/repos`
+  );
+  return createAdapterRepo(data);
 };
