@@ -13,7 +13,7 @@ interface SelectComponentProps {
   onChange: (value: string) => void;
 }
 
-const SelectComponent = ({
+export const SelectComponent = ({
   label,
   value,
   options,
@@ -110,5 +110,3 @@ const SelectComponent = ({
     </div>
   );
 };
-
-export default SelectComponent;

@@ -3,7 +3,7 @@ import { getProfileData, getUserRepos } from '@services/profile.service';
 
 import Layout from '@/src/layouts/Layout.astro';
 import Profile from '@components/sections/profile-aside/Profile.astro';
-import Main from '@components/sections/main/Main.astro';
+import Main from '@/src/components/sections/main/Main';
 
 import '@/src/globals.css';
 
@@ -14,6 +14,47 @@ const repoData = await getUserRepos(username || 'diegodev-01');
 ---
 
 <Layout>
+  <form
+    id="user-form"
+    onsubmit="const u = this.username.value.trim(); if(u) location.href = `/${u}`"
+  >
+    <input
+      type="text"
+      name="username"
+      value={username}
+      placeholder="Enter GitHub username"
+    />
+    <button type="submit">Buscar</button>
+  </form>
   <Profile data={profileData} />
-  <Main repoCount={profileData.repos} repoData={repoData} />
+  <Main repoCount={profileData.repos} repoData={repoData} client:only="react" />
 </Layout>
+
+<style>
+  form {
+    display: flex;
+    position: absolute;
+    top: 3.3em;
+    right: 5em;
+    z-index: 100;
+  }
+
+  input {
+    padding: 0.5em;
+    border-radius: 0.5em;
+    border: 1px solid var(--grey);
+    background-color: transparent;
+    color: white;
+    margin-right: 0.5em;
+    font-size: 1em;
+  }
+
+  button {
+    background-color: var(--button--bg);
+    color: var(--button--color);
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    border: 1px solid var(--grey);
+    cursor: pointer;
+  }
+</style>

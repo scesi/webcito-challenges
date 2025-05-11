@@ -4,14 +4,13 @@ import Button from '@components/ui/button/Button.astro';
 import ProfileBlank from '@/src/assets/profile-blank.svg';
 import HeartIcon from '@assets/svg/heart-icon.svg';
 import FollowersIcon from '@assets/svg/followers-icon.svg';
-import StarIcon from '@assets/svg/star-icon.svg';
+import LinkIcon from '@assets/svg/link-icon.svg';
+import LocationIcon from '@assets/svg/location-icon.svg';
+import { StarIcon } from '@components/ui/icons/star-icon';
 
 import InstagramLogo from '@assets/logos/socials/instagram-logo.svg';
 import TwitterLogo from '@assets/logos/socials/twitter-logo.svg';
 import LinkedInLogo from '@assets/logos/socials/linkedin-logo.svg';
-
-import LocationIcon from '@assets/svg/location-icon.svg';
-import LinkIcon from '@assets/svg/link-icon.svg';
 
 const { data } = Astro.props;
 ---
@@ -45,7 +44,7 @@ const { data } = Astro.props;
       <span class="dot"></span>
     </article>
     <article class="stars-info">
-      <StarIcon class="social-icon" />
+      <StarIcon />
       <p>{data.stars || 0}</p>
     </article>
   </div>

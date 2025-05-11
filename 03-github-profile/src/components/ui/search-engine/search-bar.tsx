@@ -1,15 +1,11 @@
-import { useSearch } from '@/src/hooks/useSearch';
-
 import styles from './search-bar.module.css';
-import { useState } from 'react';
 
-const SearchEngine = () => {
-  const [query, setQuery] = useState('');
-  const [username, setUsername] = useState('diegodev-01');
-  const [results, loading, error] = useSearch(query, username);
+interface SearchEngineProps {
+  query: string;
+  setQuery: (query: string) => void;
+}
 
-  console.log(results);
-
+export const SearchEngine = ({ query, setQuery }: SearchEngineProps) => {
   return (
     <search className={styles.search}>
       <input
@@ -27,4 +23,3 @@ const SearchEngine = () => {
     </search>
   );
 };
-export default SearchEngine;
