@@ -16,16 +16,18 @@ const { data } = Astro.props;
 ---
 
 <aside>
-  {
-    data.avatar_url ? (
-      <img src={data.avatar_url} alt="Avatar" class="avatar" />
-    ) : (
-      <ProfileBlank class="avatar" aria-label="Avatar" role="img" />
-    )
-  }
   <div class="profile-info">
-    <h1>{data.name}</h1>
-    <h2>{data.nickname}</h2>
+    {
+      data.avatar_url ? (
+        <img src={data.avatar_url} alt="Avatar" class="avatar" />
+      ) : (
+        <ProfileBlank class="avatar" aria-label="Avatar" role="img" />
+      )
+    }
+    <span class="profile-text">
+      <h1>{data.name}</h1>
+      <h2>{data.nickname}</h2>
+    </span>
   </div>
   <div class="action-buttons">
     <Button> Follow </Button>
@@ -87,6 +89,12 @@ const { data } = Astro.props;
 </aside>
 
 <style>
+
+  h1 {
+    font-size: var(--headline-1);
+    margin: 0;
+  }
+
   aside {
     display: flex;
     flex-direction: column;
@@ -172,5 +180,51 @@ const { data } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 0rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    aside {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 1em;
+    }
+    .avatar {
+      width: 5em;
+      height: 5em;
+    }
+    .sponsor-button {
+      width: 100%;
+    }
+
+    .sponsor-button {
+      width: 100%;
+    }
+
+    .social-container {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .stats {
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+
+    .profile-info {
+      flex-direction: row;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .profile-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .action-buttons {
+      display: flex;
+      order: 1;
+    }
   }
 </style>

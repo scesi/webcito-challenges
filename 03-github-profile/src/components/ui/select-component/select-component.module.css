@@ -88,3 +88,29 @@
   color: var(--white);
   font-size: var(--body-2---regular);
 }
+
+@media screen and (max-width: 768px) {
+  .dropdown {
+    position: static;
+  }
+
+  .dropdownContainer {
+    width: 80%;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .dropdownContainer {
+    width: 100%;
+    left: 0;
+    right: auto;
+    transform: translateX(0);
+  }
+
+  .dropdownToggle {
+    padding: 0.5rem 1rem;
+  }
+}

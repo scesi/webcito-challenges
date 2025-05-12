@@ -1,37 +1,58 @@
 .repositories {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+}
+
+h2 {
+  margin: 0;
+}
+
+.repoList {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  height: 70vh;
+  overflow-y: scroll;
+}
+
+.repoList::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.repoList::-webkit-scrollbar-thumb {
+  background-color: var(--grey);
+  border-radius: 1em;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3em;
+  gap: 1em;
+  padding: 1em 0;
+}
+
+@media screen and (max-width: 768px) {
+  .repositories {
+    padding: 0;
+    gap: 5em;
   }
   
   h2 {
-    margin: 0;
+    display: none;
   }
-  
-  .repoList {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    height: 70vh;
-    overflow-y: scroll;
-  }
-  
-  .repoList::-webkit-scrollbar {
-    width: 0.5em;
-  }
-  
-  .repoList::-webkit-scrollbar-thumb {
-    background-color: var(--grey);
-    border-radius: 1em;
-  }
-  
+
   .controls {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 3em;
-    gap: 1em;
-    padding: 1em 0;
+    flex-wrap: wrap;
+    justify-content: start;
   }
-  
+
+  .repoList {
+    overflow-y: inherit;
+  }
+}
+
