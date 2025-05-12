@@ -1,19 +1,35 @@
 import { ActionsButtons } from "@/components/profile/actions-buttons";
 import Avatar from "@/components/profile/avatar";
 import HeaderProfile from "@/components/profile/header-profile";
-import { fetchUserGithub } from "@/services/github-service";
 import { Profile } from "./types/profile";
 import { InfoSocialProfile } from "@/components/profile/info-social-profile";
+import { RepositoriesSection } from "@/components/repository/repo-section";
+import { Repo } from "./types/repo";
+
+// Puedes hacer fetch SSR o CSR. Aquí ejemplo SSR:
+async function getProfileAndRepos(username: string) {
+  const [profileRes, reposRes] = await Promise.all([
+    fetch(`https://api.github.com/users/${username}`),
+    fetch(`https://api.github.com/users/${username}/repos?per_page=100`),
+  ]);
+  const profile: Profile = await profileRes.json();
+  const repos: Repo[] = await reposRes.json();
+  return { profile, repos };
+}
 
 export default async function Home() {
-  const userGithub: Profile = await fetchUserGithub("ivancidev");
+  const username = "ivancidev";
+  const { profile, repos } = await getProfileAndRepos(username);
   return (
-    <div className="container max-w-2xl py-10 px-20">
+    <div className="flex justify-center py-10 px-20">
       <div className="w-[300px]">
-        <Avatar src={userGithub.avatar_url} alt={userGithub.name} />
-        <HeaderProfile name={userGithub.name} userName={userGithub.login} />
+        <Avatar src={profile.avatar_url} alt={profile.name} />
+        <HeaderProfile name={profile.name} userName={profile.login} />
         <ActionsButtons />
-        <InfoSocialProfile profile={userGithub} />
+        <InfoSocialProfile profile={profile} />
+      </div>
+      <div className="flex-1 w-full">
+        <RepositoriesSection repos={repos} />
       </div>
     </div>
   );
