@@ -16,7 +16,7 @@ const repoData = await getUserRepos(username || 'diegodev-01');
 <Layout>
   <form
     id="user-form"
-    onsubmit="const u = this.username.value.trim(); if(u) location.href = `/${u}`"
+    onsubmit="event.preventDefault(); const u = this.username.value.trim(); if(u) location.href = `/${u}`"
   >
     <input
       type="text"
