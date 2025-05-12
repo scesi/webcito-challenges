@@ -40,8 +40,9 @@ h2 {
     padding: 0;
     gap: 5em;
   }
-  
-  h2 {
+
+  .repoTitle {
+    display: block;
     display: none;
   }
 
@@ -54,5 +55,6 @@ h2 {
   .repoList {
     overflow-y: inherit;
   }
-}
 
+
+}

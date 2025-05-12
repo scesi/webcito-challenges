@@ -27,7 +27,7 @@ const Repositories = ({
 
   return (
     <main className={styles.repositories}>
-      <h2>Repositories ({repoCount})</h2>
+      <h2 className={styles.repoTitle}>Repositories ({repoCount})</h2>
       <article className={styles.controls}>
         <SearchEngine query={query} setQuery={setQuery} />
         <SelectComponent
