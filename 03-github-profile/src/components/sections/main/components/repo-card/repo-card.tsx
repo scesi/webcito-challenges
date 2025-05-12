@@ -2,6 +2,7 @@ import type { RepoData } from '@/src/types/repository';
 
 import styles from './repo-card.module.css';
 import { StarIcon } from '@components/ui/icons/star-icon';
+import { ForkIcon } from '@/src/components/ui/icons/fork-icon';
 
 interface RepoCardProps {
   repo: RepoData;
@@ -33,6 +34,7 @@ export function RepoCard({ repo }: RepoCardProps) {
           <p>{repo.stars}</p>
         </span>
         <span className={styles.repoStat}>
+          <ForkIcon />
           <p>{repo.forks}</p>
         </span>
       </div>

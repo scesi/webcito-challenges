@@ -23,7 +23,7 @@ const { data } = Astro.props;
       <ProfileBlank class="avatar" aria-label="Avatar" role="img" />
     )
   }
-  <div>
+  <div class="profile-info">
     <h1>{data.name}</h1>
     <h2>{data.nickname}</h2>
   </div>
@@ -93,6 +93,7 @@ const { data } = Astro.props;
     width: 30%;
     max-width: 25em;
     height: fit-content;
+    gap: 1rem;
   }
   .avatar {
     width: 15em;
@@ -165,5 +166,11 @@ const { data } = Astro.props;
     height: 2rem;
     vertical-align: middle;
     display: inline-block;
+  }
+
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
   }
 </style>
