@@ -1,0 +1,243 @@
+
+.timer {
+  background-color: #1a1f2e;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.timer__background-circle {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(1, 251, 255, 0.667);
+  filter: blur(120px);
+}
+
+.timer__background-circle--top-right {
+  top: -150px;
+  right: -150px;
+}
+
+.timer__background-circle--bottom-left {
+  bottom: -150px;
+  left: -150px;
+  background: rgba(128, 0, 234, 0.749);
+}
+
+.timer__container {
+  background-color: #141c27;
+  padding: 48px;
+  border-radius: 1.2rem;
+  box-shadow: 9px 9px 16px rgba(0, 0, 0, 0.24),
+    -4px -4px 16px rgba(73, 73, 73, 0.4);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  max-width: 240px;
+  min-width: 240px;
+  height: 424px;
+  position: relative;
+  z-index: 1;
+}
+
+.timer__title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.timer__circle {
+  width: 220px;
+  height: 220px;
+  position: relative;
+  margin: 24px 0 0 0;
+}
+
+.timer__progress {
+  transform: rotate(-90deg);
+}
+
+.timer__progress-circle {
+  fill: none;
+  stroke: #ff00ff;
+  stroke-width: 10;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 8px rgba(255, 0, 255, 0.5));
+}
+
+.timer__progress-circle--break {
+  fill: none;
+  stroke: #3ab499;
+  stroke-width: 10;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 8px #3ab49a3e);
+}
+
+.timer__progress-background {
+  fill: none;
+  stroke: rgba(255, 0, 255, 0.15);
+  stroke-width: 10;
+}
+
+.timer__progress-background--break {
+  fill: none;
+  stroke: #3ab49a3e;
+  stroke-width: 10;
+}
+
+.timer__time {
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ff00ff;
+  font-size: 3.5rem;
+  font-weight: 400;
+  text-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+  letter-spacing: 2px;
+}
+
+.timer__time--break {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #3ab499;
+  font-size: 3.5rem;
+  font-weight: 400;
+  text-shadow: 0 0 20px rgba(59, 181, 154, 0.5);
+  letter-spacing: 2px;
+}
+
+.timer__cycle-count {
+  position: absolute;
+  bottom: 43px;
+  left: 45%;
+  color: #fff;
+}
+
+.timer__button {
+  background-color: #172030;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 9px 9px 16px rgba(0, 0, 0, 0.24),
+    -4px -4px 16px rgba(73, 73, 73, 0.4);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 24px;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.timer__button--break {
+  color: #ffffff;
+}
+
+.timer__button--break:hover {
+  background-color: rgba(0, 77, 153, 0.25);
+}
+
+.timer__button--pause {
+  background-color: transparent;
+  color: #ff4444;
+}
+
+.timer__button--pause:hover {
+  background-color: rgba(255, 68, 68, 0.1);
+}
+
+.timer__button--theme {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  background-color: #222;
+  z-index: 9999;
+}
+
+.timer__button--theme--imgDark {
+  filter: invert(1);
+  width: 20px;
+  height: 20px;
+  padding-top: 5px;
+}
+
+.timer__button--theme--imgLight {
+  filter: invert(0);
+  width: 15px;
+  height: 15px;
+}
+
+.timer.light {
+  background-color: #f0f0f0;
+}
+
+.timer.light .timer__container {
+
+  background-color: #ffffff;
+  box-shadow: 9px 9px 16px rgba(0, 0, 0, 0.1),
+    -4px -4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.timer.light .timer__title,
+.timer.light .timer__cycle-count {
+  color: #333;
+}
+
+.timer.light .timer__time {
+  color: #007acc;
+  text-shadow: none;
+}
+
+.timer.light .timer__time--break {
+  color: #009688;
+  text-shadow: none;
+}
+
+.timer.light .timer__progress-circle {
+  stroke: #007acc;
+  filter: none;
+}
+
+.timer.light .timer__progress-circle--break {
+  stroke: #009688;
+  filter: none;
+}
+
+.timer.light .timer__progress-background {
+  stroke: rgba(0, 122, 204, 0.15);
+}
+
+.timer.light .timer__progress-background--break {
+  stroke: rgba(0, 150, 136, 0.15);
+}
+
+.timer.light .timer__button {
+  background-color: #e0e0e0;
+  color: #333;
+  box-shadow: none;
+}
+
+.timer.light .timer__button--break:hover {
+  background-color: #d0d0d0;
+}
+
+.timer.light .timer__button--pause {
+  color: #d32f2f;
+}
