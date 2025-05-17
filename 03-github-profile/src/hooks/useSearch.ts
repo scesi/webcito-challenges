@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+
+import { getUserRepos } from '../services/profile.service';
+
 import type { RepoData } from '../types';
 
 export const useSearch = (query: string, username: string) => {
@@ -8,13 +11,7 @@ export const useSearch = (query: string, username: string) => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`${import.meta.env.PUBLIC_API_URL}users/${username}/repos`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
+    getUserRepos(username)
       .then((data) => {
         setAllRepos(data);
         setResults(data);

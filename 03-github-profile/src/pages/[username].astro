@@ -27,7 +27,12 @@ const repoData = await getUserRepos(username || 'diegodev-01');
     <button type="submit">Buscar</button>
   </form>
   <Profile data={profileData} />
-  <Main repoCount={profileData.repos} repoData={repoData} client:only="react" />
+  <Main
+    username={username}
+    repoCount={profileData.repos}
+    repoData={repoData}
+    client:only="react"
+  />
 </Layout>
 
 <style>

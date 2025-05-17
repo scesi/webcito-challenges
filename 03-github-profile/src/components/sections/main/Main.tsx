@@ -11,15 +11,11 @@ import { useSearch } from '@/src/hooks/useSearch';
 interface RepositoriesProps {
   repoCount: number;
   repoData: RepoData[];
-  username?: string;
+  username: string;
   query?: string;
 }
 
-const Repositories = ({
-  repoCount,
-  repoData,
-  username = 'diegodev-01',
-}: RepositoriesProps) => {
+const Repositories = ({ repoCount, repoData, username }: RepositoriesProps) => {
   const [query, setQuery] = useState('');
   const [results, loading, error] = useSearch(query, username);
 

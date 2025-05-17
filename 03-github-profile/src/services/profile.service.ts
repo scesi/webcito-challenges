@@ -4,11 +4,7 @@ import type { ProfileData, RepoData } from '../types';
 const API_BASE = import.meta.env.PUBLIC_API_URL;
 
 const fetchWithHandling = async <T>(url: string): Promise<T> => {
-  const response = await fetch(url, {
-    headers: {
-      Authorization: `Bearer ${import.meta.env.PRIVATE_API_TOKEN}`,
-    },
-  });
+  const response = await fetch(url);
 
   if (!response.ok) {
     const message = await response.text();
