@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all';"
+    />
+    <title>Pomodoro Tracker</title>
+  </head>
+  <body class="dark-theme">
+    <div class="balloon one"></div>
+    <main class="container">
+      <h1 class="title">Pomodoro Tracker</h1>
+      <my-timer
+        id="timer"
+        time="25:00"
+        switch="false"
+        timecolor="#E04B46"
+        width="150"
+      ></my-timer>
+      <div class="buttons">
+        <button-component
+          id="primarybtn"
+          text="Start Pomodoro"
+          width="200"
+        ></button-component>
+        <button-component
+          id="secondarybtn"
+          text="Pause Pomodoro"
+          type="dangerbtn"
+          width="200"
+        ></button-component>
+      </div>
+    </main>
+    <switch-component class="themeChanger" id="themeButton"></switch-component>
+    <div class="counters">
+      <p id="sessions">Sessions: 0</p>
+      <p id="pomodoros">Pomodoros: 0</p>
+      <p id="breaks">Breaks: 0</p>
+    </div>
+
+    <div class="balloon two"></div>
+    <script src="./main.js"></script>
+    <script
+      type="module"
+      src="./src/components/switch-component/switch.js"
+    ></script>
+    <script
+      type="module"
+      src="./src/components/button-component/button.js"
+    ></script>
+    <script
+      type="module"
+      src="./src/components/timer-component/timer.js"
+    ></script>
+  </body>
+</html>
