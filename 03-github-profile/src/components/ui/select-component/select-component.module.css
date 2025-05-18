@@ -104,13 +104,17 @@
 
 @media screen and (max-width: 480px) {
   .dropdownContainer {
-    width: 100%;
-    left: 0;
+    width: 80%;
+    left: 50%;
     right: auto;
-    transform: translateX(0);
+    transform: translateX(-50%);
   }
 
   .dropdownToggle {
     padding: 0.5rem 1rem;
+  }
+
+  .buttonLabel {
+    font-size: var(--caption---regular);
   }
 }
