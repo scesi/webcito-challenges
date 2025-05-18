@@ -1,16 +1,40 @@
 ---
 import { getProfileData, getUserRepos } from '@services/profile.service';
+import type { ProfileData, RepoData } from '../types';
 
 import Layout from '@/src/layouts/Layout.astro';
-import Profile from '@components/sections/profile-aside/Profile.astro';
 import Main from '@/src/components/sections/main/Main';
+import Profile from '@components/sections/profile-aside/Profile.astro';
 
+import GithubGod from '/public/favicon.svg';
 import '@/src/globals.css';
 
 const { username = 'diegodev-01' } = Astro.params;
 
-const profileData = await getProfileData(username || 'diegodev-01');
-const repoData = await getUserRepos(username || 'diegodev-01');
+let profileData: ProfileData = {
+  name: '',
+  bio: '',
+  location: '',
+  followers: 0,
+  following: 0,
+  repos: 0,
+  avatar_url: '',
+  nickname: '',
+  stars: 0,
+  linkedin_username: '',
+  twitter_username: '',
+  website: '',
+  topics: [],
+};
+let repoData: RepoData[] = [];
+let notFound = false;
+try {
+  profileData = await getProfileData(username || 'diegodev-01');
+  repoData = await getUserRepos(username || 'diegodev-01');
+} catch (error) {
+  console.error('Error fetching data:', error);
+  notFound = true;
+}
 ---
 
 <Layout>
@@ -26,13 +50,25 @@ const repoData = await getUserRepos(username || 'diegodev-01');
     />
     <button type="submit">Buscar</button>
   </form>
-  <Profile data={profileData} />
-  <Main
-    username={username}
-    repoCount={profileData.repos}
-    repoData={repoData}
-    client:only="react"
-  />
+  {
+    notFound ? (
+      <div class="not-found">
+        <GithubGod />
+        <span>
+        <h2>User not found</h2>
+        <p>Please check the username and try again.</p>
+        </span>
+      </div>
+    ) : (
+      <Profile data={profileData} />
+      <Main
+        username={username}
+        repoCount={profileData.repos}
+        repoData={repoData}
+        client:only="react"
+      />
+    )
+  }
 </Layout>
 
 <style>
@@ -63,6 +99,14 @@ const repoData = await getUserRepos(username || 'diegodev-01');
     cursor: pointer;
   }
 
+  .not-found {
+      display: flex;
+      margin-inline:  auto;
+      align-items: center;
+      margin-top: 5em;
+      gap: 5em;
+    }
+
   @media screen and (max-width: 768px) {
     form {
       position: static;
@@ -77,6 +121,13 @@ const repoData = await getUserRepos(username || 'diegodev-01');
     input {
       width: 100%;
       margin-right: 0;
+    }
+
+    .not-found{
+      flex-direction: column;
+      margin-top: 5em;
+      text-align: center;
+      gap: 1em;
     }
   }
 </style>
