@@ -6,4 +6,5 @@ export interface RepoData {
     stars: number;
     topics: string[];
     forks: number;
+    url: string;
   }

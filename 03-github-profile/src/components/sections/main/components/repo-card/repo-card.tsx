@@ -9,10 +9,14 @@ interface RepoCardProps {
 }
 
 export function RepoCard({ repo }: RepoCardProps) {
+ 
+console.log("hola",repo);
   return (
     <article className={styles.repoItem}>
       <div className={styles.repoHeader}>
-        <h3 className={styles.repoName}>{repo.name}</h3>
+        <h3 className={styles.repoName}>
+          <a href={repo.url}>{repo.name}</a>
+        </h3>
         <p className={styles.repoVisibility}>{repo.visibility}</p>
       </div>
       <p className={styles.repoDescription}>{repo.description}</p>

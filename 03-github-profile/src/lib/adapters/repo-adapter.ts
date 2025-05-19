@@ -9,5 +9,6 @@ export const createAdapterRepo = (data: any[]): RepoData[] => {
     language: repo.language || 'Unknown',
     stars: repo.stars || 0,
     forks: repo.forks || 0,
+    url: repo.html_url,
   }));
 };

@@ -17,6 +17,11 @@
   color: var(--primary);
 }
 
+ a {
+    all: unset;
+    cursor: pointer;
+  }
+
 .repoVisibility {
   border: 1px solid var(--grey);
   color: var(--grey);
