@@ -1,0 +1,13 @@
+{
+  "name": "02-pomodoro-tracker",
+  "version": "1.0.0",
+  "description": "Bienvenido al reto **Pomodoro Tracker**, parte de los desafíos de **Webcito Challenges**. En este reto, desarrollarás tu propia versión del método Pomodoro, un técnica de administración del tiempo que te ayudará a mejorar tu enfoque y productividad.",
+  "main": "main.js",
+  "scripts": {
+    "test": "node ./src/shared"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}

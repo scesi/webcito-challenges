@@ -1,0 +1,139 @@
+.dark-theme {
+  /* Color styles */
+  --black: #141c27;
+  --stroke: #272829;
+  --pink: #e046d7;
+  --green: #3ab499;
+  --bg: #172030;
+  --bubbles: #1a2538;
+  --white: #ffffff;
+  --red: #f94409;
+  --button: #172030;
+  --text: #f2f2f2;
+
+  /* Text-size styles */
+  --button: 16px;
+  --title: 24px;
+
+  /* Effect styles */
+  --shadow: -4px -4px 16px rgba(73, 73, 73, 0.4),
+    9px 9px 16px rgba(0, 0, 0, 0.24);
+}
+
+.light-theme {
+  /* Color styles */
+  --black: #141c27; /* Cambiar a un gris claro */
+  --stroke: #272829; /* Cambiar a un gris claro */
+  --pink: #e046d7; /* Se mantiene igual */
+  --green: #3ab499; /* Se mantiene igual */
+  --bubbles: #c0edff;
+  --bg: #e0fdff; /* Fondo blanco para tema claro */
+  --white: #000000; /* Color de texto en negro */
+  --red: #f94409; /* Se mantiene igual */
+  --button: #ffffff; /* Fondo de botones blanco */
+  --text: #333333;
+
+  /* Text-size styles */
+  --button: 16px;
+  --title: 24px;
+
+  /* Effect styles */
+  --shadow: 9px 9px 16px rgba(0, 0, 0, 0.24),
+    -4px -4px 16px rgba(73, 73, 73, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+p {
+  margin: 0;
+}
+
+.title {
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 9px 9px 16px rgba(0, 0, 0, 0.24),
+    -4px -4px 16px rgba(73, 73, 73, 0.4);
+  gap: 1rem;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.balloon {
+  background-color: var(--bg);
+  width: 25rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 9px 9px 16px rgba(0, 0, 0, 0.24),
+    -4px -4px 16px rgba(73, 73, 73, 0.4);
+}
+
+.one,
+.two {
+  display: flex;
+}
+
+.one {
+  margin-bottom: -50px;
+  margin-left: -50px;
+  align-self: flex-end;
+}
+
+.two {
+  background-color: var(--bubbles);
+  margin-top: -50px;
+  margin-right: -50px;
+  align-self: flex-start;
+}
+
+.counters {
+  z-index: 100;
+  color: var(--white);
+  position: absolute;
+  align-self: flex-start;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.themeChanger {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}

@@ -1,0 +1,45 @@
+:root {
+  /* Color styles */
+  --primary: rgba(87, 166, 255, 1);
+  --white: rgba(255, 255, 254, 1);
+  --black: rgba(20, 20, 20, 1);
+  --grey: rgba(139, 148, 158, 1);
+  --bg: rgba(13, 17, 23, 1);
+  --button-bg: rgba(34, 38, 44, 1);
+  --grey-2: rgba(197, 206, 215, 1);
+  --pink: rgba(204, 104, 160, 1);
+  --yellow: rgba(241, 224, 90, 1);
+  --purple: rgba(86, 61, 124, 1);
+  --black-2: rgba(23, 27, 33, 1);
+
+  /* Text-size styles */
+  --headline-1: 26px;
+  --button: 14px;
+  --headline-2---semi-bold: 20px;
+  --headline-2---ligth: 20px;
+  --body-1---regular: 16px;
+  --body-1---semi--bold: 16px;
+  --body-2---regular: 14px;
+  --body-2---semi--bold: 14px;
+  --caption---regular: 12px;
+  --caption---medium: 12px;
+}
+
+body {
+  margin: 0;
+  padding: 3em 5em;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--white);
+  display: flex;
+  width: 100%;
+  gap: 3em;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    flex-direction: column;
+    padding: 1.5em;
+    gap: 1.5em;
+  }
+}

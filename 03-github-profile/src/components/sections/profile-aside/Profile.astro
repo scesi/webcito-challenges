@@ -1,0 +1,232 @@
+---
+import Button from '@components/ui/button/Button.astro';
+
+import ProfileBlank from '@/src/assets/profile-blank.svg';
+import HeartIcon from '@assets/svg/heart-icon.svg';
+import FollowersIcon from '@assets/svg/followers-icon.svg';
+import LinkIcon from '@assets/svg/link-icon.svg';
+import LocationIcon from '@assets/svg/location-icon.svg';
+import { StarIcon } from '@components/ui/icons/star-icon';
+
+import InstagramLogo from '@assets/logos/socials/instagram-logo.svg';
+import TwitterLogo from '@assets/logos/socials/twitter-logo.svg';
+import LinkedInLogo from '@assets/logos/socials/linkedin-logo.svg';
+
+const { data } = Astro.props;
+---
+
+<aside>
+  <div class="profile-info">
+    {
+      data.avatar_url ? (
+        <img src={`${data.avatar_url}&s=300`} alt="Avatar" class="avatar" />
+      ) : (
+        <ProfileBlank class="avatar" aria-label="Avatar" role="img" />
+      )
+    }
+    <span class="profile-text">
+      <h1>{data.name}</h1>
+      <h2>{data.nickname}</h2>
+    </span>
+  </div>
+  <div class="action-buttons">
+    <Button> Follow </Button>
+    <Button class="sponsor-button" href={data.sponsor_url}>
+      <HeartIcon class="heart-icon" />
+      Sponsor
+    </Button>
+  </div>
+  <p>{data.bio}</p>
+  <div class="stats">
+    <article class="follow-info">
+      <FollowersIcon class="social-icon" />
+      <p>{data.followers} Followers</p>
+      <span class="dot"></span>
+      <p>{data.following} Following</p>
+      <span class="dot"></span>
+    </article>
+    <article class="stars-info">
+      <StarIcon />
+      <p>{data.stars || 0}</p>
+    </article>
+  </div>
+  <article class="social-container">
+    <LocationIcon class="social-icon" />
+    <p>{data.location}</p>
+  </article>
+  {
+    data.website && (
+      <article class="social-container">
+        <LinkIcon class="social-icon" />
+        <p>{data.website}</p>
+      </article>
+    )
+  }
+  {
+    data.twitter_username && (
+      <article class="social-container">
+        <TwitterLogo class="social-icon" />
+        <p>{data.twitter_username}</p>
+      </article>
+    )
+  }
+  {
+    data.instagram_username && (
+      <article class="social-container">
+        <InstagramLogo class="social-icon" />
+        <p>{data.instagram_username}</p>
+      </article>
+    )
+  }
+  {
+    data.linkedin_username && (
+      <article class="social-container">
+        <LinkedInLogo class="social-icon" />
+        <p>{data.linkedin_username}</p>
+      </article>
+    )
+  }
+</aside>
+
+<style>
+
+  h1 {
+    font-size: var(--headline-1);
+    margin: 0;
+  }
+
+  aside {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    max-width: 25em;
+    height: fit-content;
+    gap: 1rem;
+  }
+  .avatar {
+    width: 15em;
+    height: 15em;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    border: 1px solid rgba(255, 244, 244, 0.26);
+    transform: scale(1);
+  }
+
+  h2 {
+    font-size: var(--headline-2---ligth);
+    font-weight: 100;
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .sponsor-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .heart-icon {
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .stats {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .dot {
+    width: 5px;
+    height: 5px;
+    background-color: var(--grey-2);
+    border-radius: 100%;
+    margin: 0 0.5rem;
+  }
+
+  .follow-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .stars-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .social-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .social-icon {
+    width: 2rem;
+    height: 2rem;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    aside {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 1em;
+      gap: 0.2rem;
+    }
+    .avatar {
+      width: 5em;
+      height: 5em;
+    }
+    .sponsor-button {
+      width: 100%;
+    }
+
+    .sponsor-button {
+      width: 100%;
+    }
+
+    .social-container {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .stats {
+      flex-wrap: wrap;
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+
+    .profile-info {
+      flex-direction: row;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .profile-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .action-buttons {
+      display: flex;
+      order: 1;
+    }
+  }
+</style>
