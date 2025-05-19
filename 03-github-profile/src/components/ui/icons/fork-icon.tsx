@@ -13,16 +13,16 @@ export const ForkIcon = (props: SVGProps<SVGSVGElement>) => {
       <path
         d="M5 2.59v10m10-5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5m-10 10a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"
         stroke="#8B949E"
-        stroke-width="1.667"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.667"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M15 7.59a7.5 7.5 0 0 1-7.5 7.5"
         stroke="#8B949E"
-        stroke-width="1.667"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.667"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

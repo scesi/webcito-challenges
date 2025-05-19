@@ -10,6 +10,7 @@ import GithubGod from '/public/favicon.svg';
 import '@/src/globals.css';
 
 const { username = 'diegodev-01' } = Astro.params;
+Astro.response.headers.set('Cache-Control', 'public, s-maxage=31536000000, stale-while-revalidate=30');
 
 let profileData: ProfileData = {
   name: '',
