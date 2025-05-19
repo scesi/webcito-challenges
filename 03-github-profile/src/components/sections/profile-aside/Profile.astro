@@ -19,7 +19,7 @@ const { data } = Astro.props;
   <div class="profile-info">
     {
       data.avatar_url ? (
-        <img src={data.avatar_url} alt="Avatar" class="avatar" />
+        <img src={`${data.avatar_url}&s=300`} alt="Avatar" class="avatar" />
       ) : (
         <ProfileBlank class="avatar" aria-label="Avatar" role="img" />
       )

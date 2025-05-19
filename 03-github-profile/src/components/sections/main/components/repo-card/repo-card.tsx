@@ -10,7 +10,6 @@ interface RepoCardProps {
 
 export function RepoCard({ repo }: RepoCardProps) {
  
-console.log("hola",repo);
   return (
     <article className={styles.repoItem}>
       <div className={styles.repoHeader}>

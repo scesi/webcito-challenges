@@ -18,9 +18,7 @@ interface RepositoriesProps {
 const Repositories = ({ repoCount, repoData, username }: RepositoriesProps) => {
   const [query, setQuery] = useState('');
   const [results, loading, error] = useSearch(query, username);
-
-  console.log(results);
-
+  
   return (
     <main className={styles.repositories}>
       <h2 className={styles.repoTitle}>Repositories ({repoCount})</h2>
