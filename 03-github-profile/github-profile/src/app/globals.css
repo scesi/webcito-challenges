@@ -3,6 +3,7 @@
 :root {
   --background: #0D1117;
   --foreground: #171717;
+  --language: #15223A;
   --button: #22262C;
   --font:#C5CED7;
   --title-card: #57A6FF;
@@ -14,6 +15,7 @@
   --color-button: var(--button);
   --color-font: var(--font);
   --color-title-card: var(--title-card);
+  --color-language: var(--language);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

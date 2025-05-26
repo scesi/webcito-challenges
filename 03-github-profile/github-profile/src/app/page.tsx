@@ -1,4 +1,4 @@
-import { ArticleRepositories } from '@/components/articleRepositories';
+
 import { textFont } from '@/config/fonts';
 import Image from 'next/image';
 
@@ -88,8 +88,7 @@ export default function Home() {
           <li className=''><button className='cursor-pointer'>Sort</button></li>
           </ul>
         </nav>
-        <ArticleRepositories />
-        <ArticleRepositories />
+      
       </main>
       
     </div>
