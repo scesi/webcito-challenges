@@ -1,20 +1,22 @@
-import { Repo } from "@/app/types/repo";
-import { FiStar } from "react-icons/fi";
-import { GoRepoForked } from "react-icons/go";
-import { formatDistanceToNow } from "date-fns";
-import { useEffect, useState } from "react";
-import { Sparkline } from "./sparkline";
+import { Repo } from '@/app/types/repo';
+import { FiStar } from 'react-icons/fi';
+import { GoRepoForked } from 'react-icons/go';
+import { formatDistanceToNow } from 'date-fns';
+import { useEffect, useState } from 'react';
+import { Sparkline } from './sparkline';
+import { StarIcon } from '../icons';
 
 const languageColors: Record<string, string> = {
-  JavaScript: "#f1e05a",
-  TypeScript: "#3178c6",
-  Python: "#3572A5",
-  CSS: "#563d7c",
-  HTML: "#e34c26",
+  JavaScript: '#f1e05a',
+  TypeScript: '#3178c6',
+  Python: '#3572A5',
+  CSS: '#563d7c',
+  HTML: '#e34c26',
 };
 
 export const RepositoryCard = ({ repo }: { repo: Repo }) => {
   const [activity, setActivity] = useState<number[] | null>(null);
+  const [isStarred, setIsStarred] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -29,7 +31,7 @@ export const RepositoryCard = ({ repo }: { repo: Repo }) => {
       });
   }, [repo.owner.login, repo.name]);
   return (
-    <div className="flex flex-row justify-between items-start bg-[#161b22] rounded-lg p-4 mb-4 border border-[#21262d]">
+    <div className="flex flex-row justify-between items-start rounded-lg p-4 mb-3 border-b border-[#21262d]">
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-1">
           <a
@@ -41,7 +43,7 @@ export const RepositoryCard = ({ repo }: { repo: Repo }) => {
             {repo.name}
           </a>
           <span className="ml-2 px-2 py-0.5 rounded border border-gray-600 text-xs text-gray-400">
-            {repo.private ? "Private" : "Public"}
+            {repo.private ? 'Private' : 'Public'}
           </span>
           {repo.fork && (
             <span className="flex items-center gap-1 text-xs text-gray-400 ml-2">
@@ -58,7 +60,7 @@ export const RepositoryCard = ({ repo }: { repo: Repo }) => {
           {repo.topics?.map((topic) => (
             <span
               key={topic}
-              className="bg-[#21262d] text-gray-300 px-2 py-0.5 rounded text-xs"
+              className="bg-[#21262d] text-gray-300 px-2 py-0.5 rounded-lg text-xs"
             >
               {topic}
             </span>
@@ -70,22 +72,20 @@ export const RepositoryCard = ({ repo }: { repo: Repo }) => {
               <span
                 className="w-3 h-3 rounded-full inline-block"
                 style={{
-                  backgroundColor: languageColors[repo.language] || "#ccc",
+                  backgroundColor: languageColors[repo.language] || '#ccc',
                 }}
               ></span>
               {repo.language}
             </span>
           )}
-          {/* Estrellas */}
           <span className="flex items-center gap-1">
-            <FiStar /> {repo.stargazers_count}
+            <FiStar size={16} /> {repo.stargazers_count}
           </span>
-          {/* Forks */}
           <span className="flex items-center gap-1">
-            <GoRepoForked /> {repo.forks_count}
+            <GoRepoForked size={16} /> {repo.forks_count}
           </span>
           <span>
-            Updated{" "}
+            Updated{' '}
             {formatDistanceToNow(new Date(repo.updated_at), {
               addSuffix: true,
             })}
@@ -93,8 +93,17 @@ export const RepositoryCard = ({ repo }: { repo: Repo }) => {
         </div>
       </div>
       <div className="flex flex-col items-end min-w-[80px] ml-4">
-        <button className="flex items-center gap-1 bg-[#21262d] hover:bg-[#30363d] text-gray-200 px-4 py-2 rounded-lg border border-[#30363d] font-medium mb-2">
-          <FiStar /> Star
+        <button
+          onClick={() => setIsStarred(!isStarred)}
+          className="flex items-center gap-2 bg-[#21262d] hover:bg-[#30363d] text-gray-200 px-4 rounded-lg border border-[#30363d] font-medium mb-2 h-[40px] transition-all duration-300 ease-in-out hover:scale-105"
+        >
+          <StarIcon
+            className={`w-5 h-5 ${
+              isStarred ? 'fill-yellow-400' : ''
+            }`}
+            stroke={isStarred ? '#FFD700' : '#8B949E'}
+          />{' '}
+          <p>Star</p>
         </button>
         <div className="w-20 h-8 flex items-end">
           {activity ? (
