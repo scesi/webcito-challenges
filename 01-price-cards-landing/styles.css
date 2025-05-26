@@ -1,0 +1,249 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Poppins, sans-serif;
+}
+
+:root {
+  --primary-color: #373737;
+  --secondary-color: #848199;
+  --btn-color: #ff8e3c1a;
+  --btn-text-color: #ff8e3c;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+}
+
+body {
+  background-color: #f5f5fa;
+}
+
+/* container */
+.container {
+  display: grid;
+  place-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 40px;
+}
+
+/* container header */
+.container-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-top: 5px;
+  font-family: var(--font-family);
+
+  h1 {
+    font-size: 56px;
+    color: var(--primary-color);
+    font-weight: var(--font-weight-semibold);
+  }
+}
+
+.description {
+  font-size: 16px;
+  color: var(--secondary-color);
+  font-weight: var(--font-weight-regular);
+  line-height: 24px;
+  margin-top: 10px;
+  font-family: var(--font-family);
+}
+
+/* pricing container */
+.pricing-container {
+  display: grid;
+  place-content: center;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  font-family: var(--font-family);
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 10px;
+  padding: 30px;
+  height: 480px;
+  margin-top: 50px;
+  width: 1170px;
+}
+
+/* Tarjetas de planes  */
+.plan {
+  width: 260px;
+  height: 390px;
+  padding: 15px;
+}
+
+.plan-header {
+  display: flex;
+  align-items: center;
+
+  p {
+    font-size: 18px;
+    color: var(--secondary-color);
+    font-weight: var(--font-weight-regular);
+    margin-left: 5px;
+  }
+}
+
+h2 {
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: var(--font-weight-semibold);
+}
+
+.price {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.plan-features {
+  margin-top: 10px;
+}
+
+.plan-description {
+  font-size: 16px;
+  color: var(--secondary-color);
+  font-weight: var(--font-weight-regular);
+  line-height: 24px;
+  margin-top: 20px;
+}
+
+/* Estilo del contenedor del plan popular */
+.popular {
+  background: #ff8e3c;
+  color: white;
+  border-radius: 26px;
+  position: relative;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Etiqueta "Más Popular" */
+.badge {
+  top: 10px;
+  display: flex;
+  justify-content: flex-end;
+
+  span {
+    background: #ffd5b6;
+    color: var(--primary-color);
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 26px;
+  }
+}
+
+/* Estilo del precio en el plan popular */
+.popular .price {
+  color: var(--primary-color);
+}
+
+/* Estilo del período en el plan popular */
+.popular .price-period {
+  color: var(--primary-color);
+}
+
+/* Estilo del título del plan */
+.popular h2 {
+  color: var(--primary-color);
+}
+
+.popular .plan-description {
+  color: var(--primary-color);
+}
+
+/* Estilo de las características disponibles */
+.popular .feature.available {
+  color: var(--primary-color);
+}
+
+/* Estilo del ícono de verificación */
+.popular .checkmark {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--primary-color);
+  padding: 2px;
+  border-radius: 50%;
+}
+
+/* Estilo del botón en el plan popular */
+.popular-button {
+  background-color: #333;
+  color: white;
+}
+
+.popular-button:hover {
+  background-color: #444;
+}
+
+/* Lista de características */
+.plan-features {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.plan-features li {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+/* Estilo del ícono */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.feature {
+  color: var(--secondary-color);
+}
+/* Check en verde con fondo gris */
+.checkmark {
+  background-color: #e0e0e0; 
+  color: black;
+  padding: 2px;
+}
+
+/* X en gris */
+.crossmark {
+  background-color: #e0e0e0;
+  color: #b0b0b0;
+}
+
+/* Ajuste del tamaño del check */
+.check-symbol,
+.cross-symbol {
+  font-size: 11px;
+}
+
+.unavailable {
+  color: #c8c8c8;
+  padding: 3px;
+}
+
+/* Botones */
+.plan-button {
+  background: #ff8e3c1a;
+  color: #ff8e3c;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.popular-button {
+  background: black;
+  color: white;
+}
