@@ -1,7 +1,10 @@
 import Image from "next/image";
 import {GitHubUser} from "@/interfaces/gitHubUser";
+interface ProfileAsideProps {
+  user: GitHubUser;
+}
 
-export function ProfileAside({ user }: GitHubUser) {
+export function ProfileAside({ user }: ProfileAsideProps) {
   return (
     <aside className="grid grid-cols-1 max-h-[600px] md:h-[100px] ml-0 md:ml-[80px]">
       <Image
